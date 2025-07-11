@@ -1,0 +1,154 @@
+[
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-xxhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-xxhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-hdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-hdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnativeelementdropdown_src_assets_close.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnativeelementdropdown_src_assets_close.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnavigation_elements_src_assets_backiconmask.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnavigation_elements_src_assets_backiconmask.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnativeratings_dist_images_star.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnativeratings_dist_images_star.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnativeratings_dist_images_airbnbstarselected.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnativeratings_dist_images_airbnbstarselected.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-xhdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-xhdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnativeratings_dist_images_rocket.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnativeratings_dist_images_rocket.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnativeratings_dist_images_bell.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnativeratings_dist_images_bell.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnativeratings_dist_images_airbnbstar.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnativeratings_dist_images_airbnbstar.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnativeratings_dist_images_heart.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnativeratings_dist_images_heart.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/xml_network_security_config.xml.flat",
+        "source": "com.kcagroup.app-main-46:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-hdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-hdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable_rn_edit_text_material.xml.flat",
+        "source": "com.kcagroup.app-main-46:/drawable/rn_edit_text_material.xml"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-xhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-xhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnativeelementdropdown_src_assets_down.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnativeelementdropdown_src_assets_down.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-ldpi_ic_launcher.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-xxxhdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-xxxhdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.kcagroup.app-main-46:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-xxxhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-xxxhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-mdpi_src_assets_images_logo.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-mdpi/src_assets_images_logo.png"
+    },
+    {
+        "merged": "com.kcagroup.app-merged_res-44:/drawable-xxhdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.kcagroup.app-main-46:/drawable-xxhdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    }
+]

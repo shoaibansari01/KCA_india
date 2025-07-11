@@ -1,0 +1,73 @@
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import React from 'react'
+import { style } from '../../style/style'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { Icon } from 'react-native-elements/dist/icons/Icon'
+import { responsiveFontSize } from 'react-native-responsive-dimensions'
+
+const TermAndCond = ({ navigation }: any) => {
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <View style={style.container}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ flexDirection: "row", alignItems: "center", marginBottom: 20 }}>
+                    <Icon name="arrow-back" color="#130F26" size={22} style={{ marginRight: 14 }} />
+                    <Text style={[style.fs18, style.boldText, style.textColorBlack]}>Term & Condition</Text>
+                </TouchableOpacity>
+                <ScrollView>
+                    <View style={{ padding: 10 }}>
+                        <Text style={style.abouttext}>This website (this “Site”) is brought to you (“User”) by KCA</Text>
+                        <Text style={style.abouttext}>Your use of this Site is subject to all terms and policies posted on this Site (including the Privacy Policy, collectively referred to as “Terms of Use”). The Terms of Use may be revised from time to time through an updated posting, and therefore you should check the Terms of Use periodically. Revisions are effective upon posting and your continued use of this Site following the posting of revisions to the Terms of Use will indicate your acceptance of such revisions.</Text>
+                        <Text style={style.abouttext}>It is important to us that this Site provides a helpful and reliable experience to Users. To protect our rights and yours, we have prepared these Terms of Use that apply to all visitors to this Site. If you have any questions concerning the Terms of Use, please Contact Us.</Text>
+                        <Text style={style.abouttext}>PLEASE ALSO NOTE THAT THE USAGE AND PURCHASE TERMS AND PRIVACY POLICIES OF VARIOUS KCA PRODUCTS AND SERVICES WITHIN THIS SITE OR LINKED TO THIS SITE MAY BE SUBJECT TO DIFFERENT TERMS AND POLICIES. PLEASE CHECK THESE TERMS AND POLICIES FREQUENTLY TO DETERMINE THE TERMS APPLICABLE TO SUCH KCA PRODUCTS AND SERVICES.</Text>
+                        <Text style={style.abouttext}>BY USING OR DOWNLOADING INFORMATION FROM THIS SITE, YOU REPRESENT THAT YOU HAVE READ AND UNDERSTOOD THESE TERMS OF USE AND THE PRIVACY POLICY AND AGREE TO BE BOUND BY THEM. IF YOU DO NOT AGREE WITH ANY PART OF THESE TERMS OF USE OR THE PRIVACY POLICY GOVERNING THIS SITE, YOU SHOULD NOT USE THIS SITE. BY USING OR DOWNLOADING INFORMATION FROM THIS SITE, YOU AGREE TO USE OUR SERVICES IN A MANNER CONSISTENT WITH ALL APPLICABLE LAWS AND REGULATIONS AND IN ACCORDANCE WITH THESE TERMS OF USE.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Privacy</Text>
+                        <Text style={style.abouttext}>KCA is concerned about the safety and privacy of all users, particularly children, of this Site. Please read our Privacy Policy, which is an important part of these Terms of Use.</Text>
+                        <Text style={style.abouttext}>IF YOU ARE UNDER 18 YEARS OF AGE, PLEASE BE SURE TO READ THESE TERMS OF USE AND PRIVACY POLICY WITH YOUR PARENTS OR GUARDIAN AND ASK QUESTIONS ABOUT THINGS YOU DO NOT UNDERSTAND.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>User License</Text>
+                        <Text style={style.abouttext}>Users are granted, subject to these Terms of Use, a personal, non-exclusive, non-assignable, and non-transferable license to access and use this Site for personal and non-commercial use only. Modifications of any materials on this Site or use of the materials for any purpose other than as contemplated in this Site is a violation of KCA’ copyright and proprietary rights. You agree not to reverse engineer, duplicate, publish, modify, or otherwise distribute the materials on this Site unless specifically authorized in writing by KCA to do so.</Text>
+                        <Text style={style.abouttext}>KCA does not guarantee the accuracy or completeness of any information or content. You agree that you must evaluate, and bear all risks associated with, the use of any content, including any reliance on the accuracy, completeness, or usefulness of such content.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Postings</Text>
+                        <Text style={style.abouttext}>To the extent that certain areas of this Site provide Users an opportunity to post messages or other information (collectively, “Postings”), BE ADVISED THAT KCA HAS NO OBLIGATION TO SCREEN, EDIT, OR REVIEW SUCH POSTINGS PRIOR TO THEIR APPEARANCE ON THIS SITE, and Postings do not necessarily reflect the views of KCA. To the fullest extent permitted by applicable laws, KCA  shall in no event have any responsibility or liability for the Postings (or the loss thereof for any reason) or for any claims, damages, or losses resulting from their use (or loss) and/or appearance on this Site. The Postings are accessible and viewable to the general public and other users of this Site. KCA reserves the right to monitor all Postings and to remove anything which it considers in its absolute discretion to be offensive or otherwise in breach of these Terms of Use or for any other reason as it deems necessary. You hereby represent and warrant that you have all necessary rights in and to all Postings and all material they contain; that your Postings shall not infringe any proprietary or other rights of third parties; that your Postings shall not contain any viruses or other contaminating or destructive devices or features; that your Postings will not contain any defamatory, indecent, offensive, tortious, or otherwise unlawful material or content; and that your Postings will not be used to carry out or solicit any unlawful activity and/or be used to make commercial solicitations.</Text>
+                        <Text style={style.abouttext}>You hereby authorizeKCA to use and/or authorize others to use all or part of your Postings in any manner, format, or medium that KCA or such other parties see fit. You shall have no claim or other recourse against KCA for infringement of any proprietary right in Postings.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Unlawful Use</Text>
+                        <Text style={style.abouttext}>As a condition of your use of this Site, you warrant to KCA that you will not use this Site for any purpose that is unlawful or prohibited by the Terms of Use. You agree not to use this Site in any manner that could damage, disable, overburden, or impair this Site or interfere with any other party’s use and enjoyment of this Site. You agree not to obtain or attempt to obtain through this Site any materials or information not intentionally made available to you through this Site.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Termination</Text>
+                        <Text style={style.abouttext}>KCA reserves the right at any time, and from time to time, to modify or discontinue, temporarily or permanently, this Site, or any part thereof, with or without notice. You agree that KCA will not be liable to you or any third party for any modification, suspension, or discontinuation of this Site, or any part thereof.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Links to Other Sites</Text>
+                        <Text style={style.abouttext}>This Site may provide links to third party websites or resources. Because we do not control such websites and resources, you acknowledge and agree that KCA is not responsible or liable for the content, products or performance of such third party websites and resources, and you hereby irrevocably waive any claim against KCA with respect to such websites and resources. KCA reserves the right to terminate any link at any time without notice. The inclusion of a link to such another website or resource does not constitute or imply an endorsement, authorization, sponsorship, or affiliation by KCA of that website or resource, or any products or services provided therein. The information practices of those websites are not covered by this Privacy Policy or any other policies or terms applicable to this Site. We recommend that you review any terms of use and privacy policy of any linked third party website before providing any information to that website or using its products and services.</Text>
+                        <Text style={style.abouttext}>Please note that this Site may also provide links to other sites brought to you by KCA. The Privacy Policy and Terms of Use of other KCA sites may vary from this Site. We recommend that you review the privacy statements, terms of use and other policies or terms that may apply to other KCA sites if you should choose to use such sites.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}> Copyright and Trademark Notices</Text>
+                        <Text style={style.abouttext}>The entire content of this Site and any supporting software are the proprietary property of KCA and/or its licensors, and are protected by U.S. and international copyright and other intellectual property laws. The reproduction, redistribution, modification or publication of any part of this Site without the express written consent of KCA and/or its licensors is strictly prohibited.</Text>
+                        <Text style={style.abouttext}>You agree not to display, disparage, dilute, or taint our trademarks or use any confusing similar marks or use our trademarks in such a way that would misrepresent the ownership of such marks. Any permitted use of our trademarks by you shall be to the benefit of KCA.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Disclaimer of Warranties</Text>
+                        <Text style={style.abouttext}>YOUR USE OF THIS SITE IS AT YOUR OWN RISK. THIS SITE IS PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS. KCA EXPRESSLY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.</Text>
+                        <Text style={style.abouttext}>KCA MAKES NO WARRANTY THAT (i) THIS SITE WILL MEET YOUR REQUIREMENTS, (ii) THIS SITE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE, (iii) THE RESULTS THAT MAY BE OBTAINED FROM THE USE OF THIS SITE WILL BE ACCURATE OR RELIABLE, (iv) THE QUALITY OF ANY PRODUCTS, SERVICES, INFORMATION, OR OTHER MATERIAL PURCHASED OR OBTAINED BY YOU THROUGH THIS SITE WILL MEET YOUR EXPECTATIONS, AND (v) ANY ERRORS OR DEFECTS IN THIS SITE WILL BE CORRECTED.</Text>
+                        <Text style={style.abouttext}>ANY MATERIAL UPLOADED/DOWNLOADED OR OTHERWISE OBTAINED, FROM THIS SITE IS DONE AT YOUR OWN DISCRETION AND RISK; KCA SHALL NOT BE LIABLE, AND YOU WILL BE SOLELY RESPONSIBLE, FOR ANY AND ALL LOSS, OR CORRUPTION, OF DATA UPLOADED OR INPUTTED BY YOU THROUGH THE USE OF THIS SITE, AND ALL SERVICING, REPAIR, OR CORRECTION AND ANY DAMAGE TO YOUR HARDWARE AND SOFTWARE THAT MAY RESULT FROM THE USE OF THIS SITE.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Limitation of Liability</Text>
+                        <Text style={style.abouttext}>IN NO EVENT SHALL KCA BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE OR EXEMPLARY DAMAGES, DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE OR DATA, OR OTHER INTANGIBLE LOSSES (EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), RESULTING FROM: (i) THE LOSS OF DATA AND/OR THE USE OR THE INABILITY TO USE THIS SITE; (ii) THE COST OF PROCUREMENT OF SUBSTITUTE GOODS AND SERVICES RESULTING FROM ANY GOODS, DATA, INFORMATION OR SERVICES PURCHASED OR OBTAINED OR MESSAGES RECEIVED OR TRANSACTIONS ENTERED INTO THROUGH OR FROM THIS SITE; (iii) UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR TRANSMISSIONS OR DATA; (iv) STATEMENTS OR CONDUCT OF ANY THIRD PARTY ON THIS SITE; OR (v) ANY OTHER MATTER RELATING TO THIS SITE.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Exclusions and Limitations</Text>
+                        <Text style={style.abouttext}>SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES. ACCORDINGLY, SOME OF THE ABOVE LIMITATIONS OF THE ABOVE MAY NOT APPLY TO YOU.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Indemnification</Text>
+                        <Text style={style.abouttext}>You agree to indemnify and hold KCA and its subsidiaries, affiliates, officers, agents, directors, licensors, contractors and employees harmless from any claim or demand, including reasonable attorneys’ fees, made by any third party due to or arising out of your use of this Site, your connection to this Site, your violation of these Terms of Use, or your violation of any rights of another User.</Text>
+
+                        <Text style={{ fontSize: responsiveFontSize(2.32), color: "#000", marginVertical: 10 }}>Submissions</Text>
+                        <Text style={style.abouttext}>KCA always welcomes suggestions and comments regarding this Site from Users. Any comments or suggestions submitted to this Site or KCA, either online or offline, will become KCA property upon their submission. This policy is intended to avoid the possibility of future misunderstandings when projects developed by KCA might seem to others to be similar to their own submissions or comments</Text>
+                    </View>
+                </ScrollView>
+            </View>
+        </SafeAreaView>
+    )
+}
+
+export default TermAndCond

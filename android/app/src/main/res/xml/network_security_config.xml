@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">taxcpc.figmentglobal.com</domain>
+        <domain includeSubdomains="true">tds.figmentglobal.com</domain>
+        <domain includeSubdomains="true">figmentglobal.com</domain>
+        <domain includeSubdomains="true">google.com</domain>
+        <domain includeSubdomains="true">taxparrot.azlogics.com</domain>
+        <domain includeSubdomains="true">azlogics.com</domain>
+        <domain includeSubdomains="true">3.110.6.169</domain>
+        <domain includeSubdomains="true">192.168.86.196</domain>
+    </domain-config>
+</network-security-config>
