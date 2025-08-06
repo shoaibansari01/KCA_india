@@ -119,6 +119,45 @@ export const postReq = async ({ url, data, returnKey, errorCallback = () => null
     }
 }
 
+const getReq = async ({ url, returnKey, errorCallback = () => null, isAuthApi = true }: any) => {
+    try {
+        const headers = {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+        let res: any = null;
+        if (isAuthApi) res = await AuthApi.get(`${url}`, headers);
+        if (!isAuthApi) res = await GuestApi.get(`${url}`, headers);
+        if (returnKey && res?.data) return res?.data[returnKey]
+        if ((res.status === 200 || res.status === 201) && res?.data?.message) {
+            Snackbar.show({
+                text: `${res?.data?.message}`,
+                duration: Snackbar.LENGTH_LONG,
+                backgroundColor: "#04b20cf0",
+                marginBottom: 8
+            });
+            return res.data;
+        }
+        return res?.data;
+    } catch (e: any) {
+        const { response }: any = e;
+        if (!response) return false;
+        if (response && response.status === 400 && response?.data?.errors && response?.data?.errors.length) {
+            const errorObj: any = response?.data?.errors.reduce((acc: any, cur: any) => {
+                cur?.field && (acc[cur?.field] = cur?.message);
+                return acc;
+            }, {});
+            if (Object.keys(errorObj).length) return errorCallback(errorObj);
+            return null;
+        }
+        if (response && response.status === 500) {
+            return { statusCode: response.status, ...response.data };
+        }
+        // return false;
+    }
+}
+
 AuthApi.interceptors.request.use(
     async (config) => {
         if (await token()) {
@@ -283,4 +322,4 @@ const fileDownloader = (url: any) => new Promise((resolve, reject) => {
 });
 
 
-export { BASE_URL, GuestApi, AuthApi, FormApi, AuthGApi, fileDownloader };
+export { BASE_URL, GuestApi, AuthApi, FormApi, AuthGApi, fileDownloader, getReq };

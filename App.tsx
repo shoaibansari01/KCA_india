@@ -36,9 +36,6 @@ const App = () => {
         // RNRestart.Restart();
     };
 
-    const handleSkip = () => {
-        setIsUpdateRequired(false);
-    };
 
 
     useEffect(() => {
@@ -79,7 +76,7 @@ const App = () => {
             <AuthContext.Provider value={{ authData, setAuthData }}>
                 {isLoading ?
                     <SplashScreen />
-                    : isUpdateRequired ? <UpdateScreen {...{ handleUpdate, handleSkip }} /> : <Routes />}
+                    : isUpdateRequired ? <UpdateScreen {...{ handleUpdate }} /> : <Routes />}
             </AuthContext.Provider>
         </ThemeProvider>
     );

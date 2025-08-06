@@ -53,6 +53,11 @@ const UserDashboard = ({route, navigation}: any) => {
       redirect: `${isNational ? 'UploadData' : 'UploadArtWork'}`,
     },
     {
+      name: isNational && 'View My Students',
+      icon: 'people',
+      redirect: 'ViewStudentData',
+    },
+    {
       name: isNational && 'Upload Photos',
       icon: 'add-photo-alternate',
       redirect: 'UploadPhotos',

@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { responsiveWidth } from 'react-native-responsive-dimensions';
 
-const UpdateScreen = ({ handleUpdate, handleSkip }: any) => {
+const UpdateScreen = ({ handleUpdate }: any) => {
 
     return (
         <SafeAreaView>
@@ -15,11 +15,6 @@ const UpdateScreen = ({ handleUpdate, handleSkip }: any) => {
                 <TouchableOpacity onPress={handleUpdate}>
                     <View style={[style.submitButton, { padding: 0, marginTop: 20, width: responsiveWidth(50) }]}>
                         <Text style={{ color: "#fff", fontWeight: "bold", margin: 0 }}>Update Available</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={handleSkip}>
-                    <View style={[style.submitButton, { padding: 0, marginTop: 10, width: responsiveWidth(30), backgroundColor: '#666' }]}>
-                        <Text style={{ color: "#fff", fontWeight: "bold", margin: 0 }}>Skip</Text>
                     </View>
                 </TouchableOpacity>
             </View>

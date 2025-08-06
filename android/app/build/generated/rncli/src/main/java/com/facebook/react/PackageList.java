@@ -41,6 +41,8 @@ import com.azendoo.reactnativesnackbar.SnackbarPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 // react-native-version-check
 import io.xogus.reactnative.versioncheck.RNVersionCheckPackage;
+// react-native-view-shot
+import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 // react-native-webview
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 // sp-react-native-in-app-updates
@@ -105,6 +107,7 @@ public class PackageList {
       new SnackbarPackage(),
       new VectorIconsPackage(),
       new RNVersionCheckPackage(),
+      new RNViewShotPackage(),
       new RNCWebViewPackage(),
       new SpReactNativeInAppUpdatesPackage()
     ));

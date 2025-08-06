@@ -15,6 +15,8 @@ react {
     // codegenDir = file("../node_modules/@react-native/codegen")
     //   The cli.js file which is the React Native CLI entrypoint. Default is ../node_modules/react-native/cli.js
     // cliFile = file("../node_modules/react-native/cli.js")
+    
+    debuggableVariants = ["debug"]
 
     /* Variants */
     //   The list of variants to that are debuggable. For those we're going to
@@ -27,6 +29,7 @@ react {
     // nodeExecutableAndArgs = ["node"]
     //
     //   The command to run when bundling. By default is 'bundle'
+    
     // bundleCommand = "ram-bundle"
     //
     //   The path to the CLI configuration file. Default is empty.
@@ -78,8 +81,8 @@ android {
         applicationId "com.kcagroup"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 27
-        versionName "1.26"
+        versionCode 32
+        versionName "1.32"
     }
     signingConfigs {
          release {

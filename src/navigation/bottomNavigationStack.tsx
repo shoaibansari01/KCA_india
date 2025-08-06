@@ -28,6 +28,9 @@ import MyAccount from '../views/forms/myAccount';
 import WebviewScreen from '../components/videoModal';
 import NominiForm from '../views/nominationForm/nominiForm';
 import NominiPaymentSection from '../views/nominationForm/paymentPage';
+import ViewStudentData from '../views/forms/viewStudentData';
+import ExcelViewerScreen from '../views/forms/excelViewerScreen';
+import CertificateViewer from '../views/forms/certificateViewer';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -97,6 +100,21 @@ const HomeStack = () => {
             <Stack.Screen
                 name='UploadData'
                 component={UploadData}
+                options={{ header: () => null }}
+            />
+            <Stack.Screen
+                name='ViewStudentData'
+                component={ViewStudentData}
+                options={{ header: () => null }}
+            />
+            <Stack.Screen
+                name='ExcelViewerScreen'
+                component={ExcelViewerScreen}
+                options={{ header: () => null }}
+            />
+            <Stack.Screen
+                name='CertificateViewer'
+                component={CertificateViewer}
                 options={{ header: () => null }}
             />
             <Stack.Screen
