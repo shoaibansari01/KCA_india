@@ -9,6 +9,7 @@ import GalleryScreen from '../views/gallery';
 import ExhibitionScreen from '../views/exhibition';
 import HelpScreen from '../views/help';
 import RegistrationForm from '../components/registrationForm';
+import AllRounderForm from '../components/AllRounderForm';
 import UserDashboard from '../views/dashboard/userDashboard';
 import VerifyDetails from '../components/registrationForm/verifyDetails';
 import NominationForm from '../views/nominationForm';
@@ -60,6 +61,11 @@ const HomeStack = () => {
             <Stack.Screen
                 name='RegistrationForm'
                 component={RegistrationForm}
+                options={{ header: () => null }}
+            />
+            <Stack.Screen
+                name='AllRounderForm'
+                component={AllRounderForm}
                 options={{ header: () => null }}
             />
             <Stack.Screen

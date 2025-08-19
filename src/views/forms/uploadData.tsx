@@ -137,8 +137,8 @@ const UploadData = ({ navigation, route }: any) => {
                         </TouchableOpacity>}
 
                         <Text onPress={() => {
-                            return fileDownloader('studentUpload/kca-participant-format-1.xlsx');
-                        }} style={style.anchorLinkAccent}>Download Sample Template Here</Text>
+                            return fileDownloader('StudentDataTemplete/KCA_Sample_Templete.xlsx');
+                        }} style={style.anchorLinkAccent}>Download excell sheet to mention Participants name,class and school name. </Text>
                     </View>
 
                 </ScrollView>

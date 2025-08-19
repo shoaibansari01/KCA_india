@@ -23,6 +23,26 @@ import {countryArr, littleLegs} from '../../helper/reusableFun';
 
 const Stack = createStackNavigator();
 
+// AllRounder Talent Awards Options
+export const talentAwards = [
+  {value: 'bestChildArtist', label: 'Best Child Artist Award'},
+  {value: 'bestChildAnchor', label: 'Best Child Anchor Award'},
+  {value: 'bestChildDancer', label: 'Best Child Dancer Award'},
+  {value: 'bestChildFamilyConversation', label: 'Best Child Family Conversation Award'},
+  {value: 'bestChildMusician', label: 'Best Child Musician Award'},
+  {value: 'bestChildRampWalker', label: 'Best Child Ramp Walker Award'},
+  {value: 'bestChildSinger', label: 'Best Child Singer Award'},
+  {value: 'bestChildStoryteller', label: 'Best Child Storyteller Award'},
+  {value: 'bestShlokaReciter', label: 'Best Shloka Reciter Award'},
+  {value: 'bestChildSelfIntroduction', label: 'Best Child Self Introduction Award'},
+];
+
+// Age options (1 to 15 years)
+export const ageOptions = Array.from({length: 15}, (_, i) => ({
+  value: i + 1,
+  label: `${i + 1} year${i + 1 > 1 ? 's' : ''}`,
+}));
+
 export const registrationFormFormat: any = {
   national: {
     0: [
@@ -348,6 +368,28 @@ export const registrationFormFormat: any = {
       ],
     },
   },
+  allrounder: {
+    0: [
+      {
+        name: 'name_of_participant',
+        label: 'Name of the Participant',
+        placeholder: 'Enter participant name',
+        type: 'text',
+      },
+      {
+        name: 'school_name',
+        label: 'Name of the school',
+        placeholder: 'Enter school name',
+        type: 'text',
+      },
+      {
+        name: 'parent_name',
+        label: 'Name of the Parent',
+        placeholder: 'Enter parent name',
+        type: 'text',
+      },
+    ],
+  },
 };
 
 export const impNotes: any = {
@@ -391,6 +433,36 @@ export const impNotes: any = {
       },
     ],
   },
+  allrounder: {
+    head: {mainHead: 'All Rounder Talent Hub Contest Registration', subHead: ''},
+    body: [
+      {
+        head: 'Contest Overview',
+        content:
+          'All Rounder Talent Hub Contest is designed to celebrate and recognize the diverse talents of children across various creative fields.',
+      },
+      {
+        head: 'Age Eligibility',
+        content:
+          'Open for children aged 1 to 15 years studying from Pre-Nursery to Class 10th.',
+      },
+      {
+        head: 'Talent Categories',
+        content:
+          'Choose from 10 different talent categories including Best Child Artist, Dancer, Singer, Storyteller, and more!',
+      },
+      {
+        head: 'Registration Guidelines',
+        content:
+          'Parents or guardians can register their children by filling out the complete registration form with accurate details.',
+      },
+      {
+        head: 'Post-Registration',
+        content:
+          'After successful registration, you will receive further instructions and access to contest guidelines.',
+      },
+    ],
+  },
 };
 
 const RegistrationForm = ({props, route, navigation}: any) => {
@@ -421,6 +493,15 @@ const FormStep = ({route, navigation, level}: any) => {
   const [expanded, setExpanded] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // Safety check for level and form configuration
+  if (!level || !registrationFormFormat[level]) {
+    return (
+      <SafeAreaView style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>Invalid form configuration</Text>
+      </SafeAreaView>
+    );
+  }
+
   const nationalFormData: any = Object.keys(
     registrationFormFormat.national,
   ).reduce((a: any, c: any) => {
@@ -428,15 +509,25 @@ const FormStep = ({route, navigation, level}: any) => {
     return a;
   }, {});
 
+  const allrounderFormData: any = registrationFormFormat.allrounder?.[0]?.reduce(
+    (a: any, i: any) => {
+      a[i.name] = '';
+      return a;
+    }, 
+    {}
+  ) || {};
+
   const validateCurrentScreen = (item: any) => {
     let _R: any = {};
     const _D =
-      level != 'global'
-        ? registrationFormFormat[level]?.[item]
+      level == 'allrounder'
+        ? registrationFormFormat[level]?.[0] || []
+        : level != 'global'
+        ? registrationFormFormat[level]?.[item] || []
         : !item
-        ? registrationFormFormat[level]?.[item]
-        : registrationFormFormat[level]?.[item][`${selected}`];
-    _D.forEach((element: any) => {
+        ? registrationFormFormat[level]?.[item] || []
+        : registrationFormFormat[level]?.[item]?.[`${selected}`] || [];
+    (_D || []).forEach((element: any) => {
       if (element?.name == 'name_of_participant') {
         if (!values[element?.name]?.trim()) {
           _R[element?.name] = "Name of participant can't be blank.";
@@ -508,6 +599,7 @@ const FormStep = ({route, navigation, level}: any) => {
           'artist_contact_number',
           'art_teacher_number',
           'school_contact_number',
+          'whatsapp_number',
         ].includes(element?.name)
       ) {
         if (!values[element?.name]?.trim()) {
@@ -525,9 +617,39 @@ const FormStep = ({route, navigation, level}: any) => {
           _R[element?.name] = 'Invalid pin code';
         }
       }
+      // Allrounder specific validations
+      if (element?.name == 'age')
+        !values[element?.name]?.trim() &&
+          (_R[element?.name] = "Age can't be blank.");
+      if (element?.name == 'talent_category')
+        !values[element?.name]?.trim() &&
+          (_R[element?.name] = "Talent category can't be blank.");
+      if (element?.name == 'parent_name') {
+        if (!values[element?.name]?.trim()) {
+          _R[element?.name] = "Parent name can't be blank.";
+        } else if (/[^a-zA-Z\s]/.test(values[element?.name])) {
+          _R[element?.name] =
+            'Parent name should not contain special characters.';
+        }
+      }
+      if (element?.name == 'city')
+        !values[element?.name]?.trim() &&
+          (_R[element?.name] = "City can't be blank.");
+      if (element?.name == 'dist')
+        !values[element?.name]?.trim() &&
+          (_R[element?.name] = "District can't be blank.");
+      if (element?.name == 'state')
+        !values[element?.name]?.trim() &&
+          (_R[element?.name] = "State can't be blank.");
       setErrors(_R);
     });
-    !Object.keys(_R)?.length && setSection(item + 1);
+    if (!Object.keys(_R)?.length) {
+      if (level == 'allrounder') {
+        handleSubmit(values);
+      } else {
+        setSection(item + 1);
+      }
+    }
   };
 
   const globalFormData = Object.keys(registrationFormFormat.global).reduce(
@@ -545,7 +667,9 @@ const FormStep = ({route, navigation, level}: any) => {
   );
 
   const [formObj, setFormObj] = useState(
-    level != 'global' ? nationalFormData : globalFormData,
+    level == 'global' ? globalFormData : 
+    level == 'allrounder' ? allrounderFormData : 
+    nationalFormData,
   );
 
   const checkCate = (val: any, name: any) =>
@@ -557,7 +681,7 @@ const FormStep = ({route, navigation, level}: any) => {
       url: 'user-registration',
       data: {
         ...values,
-        formType: level != 'global' ? 'N' : 'G',
+        formType: level == 'global' ? 'G' : level == 'allrounder' ? 'A' : 'N',
         userId: authData?.user?.userId,
         formData: JSON.stringify(formData),
       },
@@ -581,9 +705,13 @@ const FormStep = ({route, navigation, level}: any) => {
 
   const validate = (values: any) => {
     let errors: any = {};
-    Object.keys(level != 'global' ? formObj : globalFormData).map(
+    Object.keys(
+      level == 'global' ? globalFormData : 
+      level == 'allrounder' ? allrounderFormData : 
+      formObj
+    ).map(
       each =>
-        !['state', 'dist', 'honorarium_name'].includes(each) &&
+        !['state', 'dist', 'honorarium_name', 'email_id'].includes(each) &&
         !values?.[each] &&
         (errors[each] = 'is required'),
     );
@@ -631,17 +759,19 @@ const FormStep = ({route, navigation, level}: any) => {
           </Text>
         </TouchableOpacity>
         <View style={{marginVertical: 20}}>
-          <TermAndCond {...{data: impNotes[level], expanded, setExpanded}} />
+          <TermAndCond {...{data: impNotes[level] || {}, expanded, setExpanded}} />
         </View>
         <ScrollView>
           {(section < 3
-            ? level == 'global' && section > 0
-              ? registrationFormFormat[level]?.[section][`${selected}`]
-              : registrationFormFormat[level]?.[section]
-            : formData
+            ? level == 'allrounder'
+              ? registrationFormFormat[level]?.[0] || []
+              : level == 'global' && section > 0
+              ? registrationFormFormat[level]?.[section]?.[`${selected}`] || []
+              : registrationFormFormat[level]?.[section] || []
+            : formData || []
           )?.map(
             ({type, placeholder, label, opt, dependOn, name}: any, i: any) =>
-              dependOn?.depend_val == values[dependOn?.depend_field] && (
+              (!dependOn || dependOn?.depend_val == values[dependOn?.depend_field]) && (
                 <View key={i}>
                   {type == 'text' ? (
                     <Input
@@ -737,7 +867,7 @@ const FormStep = ({route, navigation, level}: any) => {
               marginBottom: 20,
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              {Array(3)
+              {Array(level == 'allrounder' ? 1 : 3)
                 .fill()
                 .map((e, i) => (
                   <View
@@ -749,7 +879,7 @@ const FormStep = ({route, navigation, level}: any) => {
             <Button
               buttonStyle={{backgroundColor: '#93278f'}}
               titleStyle={{color: '#fff'}}
-              title="Next"
+              title={level == 'allrounder' ? 'Submit' : 'Next'}
               // disabled={!!Object.keys(errors)?.length}
               containerStyle={{
                 width: 120,

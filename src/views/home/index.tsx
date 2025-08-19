@@ -54,6 +54,14 @@ export const cardsMappped = [
     actionTxt: 'Nomination Form',
     redirect: 'NominationForm',
   },
+  {
+    title: 'ALL ROUNDER TALENT HUB CONTEST',
+    formType: '',
+    img: 'homepage/allrounder.png',
+    level: 'allrounder',
+    actionTxt: 'Contest Registration',
+    redirect: 'AllRounderForm',
+  },
 ];
 
 const HomeScreen = ({props, navigation}: any) => {
@@ -61,6 +69,7 @@ const HomeScreen = ({props, navigation}: any) => {
   const [preRegisterUser, setPreRegisterUser]: any = useState({
     nationalUser: {},
     globalUser: {},
+    allrounderUser: {},
   });
   const [loader, setLoader] = useState(false);
   const [bannerLoader, setBannerLoader] = useState(false);
@@ -98,18 +107,33 @@ const HomeScreen = ({props, navigation}: any) => {
       setPreRegisterUser({
         nationalUser: res?.nationalUser,
         globalUser: res?.globalUser,
+        allrounderUser: res?.allrounderUser,
       });
     setLoader(false);
   };
 
   const checkRegistration = async (level: any, redirect: any) => {
     if (redirect == 'NominationForm') navigation.navigate(redirect);
-    if (redirect != 'NominationForm') {
+    if (redirect == 'AllRounderForm') {
+      // Check if allrounder user is already registered
+      if (preRegisterUser?.allrounderUser?._id) {
+        navigation.navigate('UserDashboard', {
+          data: {
+            values: {...preRegisterUser.allrounderUser}, 
+            level: 'allrounder'
+          }
+        });
+      } else {
+        navigation.navigate(redirect);
+      }
+      return;
+    }
+    if (redirect != 'NominationForm' && redirect != 'AllRounderForm') {
       const _ = await postReq({
         url: 'check-register',
         data: {
           userId: authData?.user?.userId,
-          formType: level == 'global' ? 'G' : 'N',
+          formType: level == 'global' ? 'G' : level == 'national' ? 'N' : level == 'allrounder' ? 'A' : 'N',
         },
         returnKey: 'authdata',
       });
@@ -188,6 +212,7 @@ const HomeScreen = ({props, navigation}: any) => {
                 `National Talent Search Drawing and Painting Scholarship Competition (For Nursery to class 10th students)`,
                 `Global Art Exhibition (Open For All)`,
                 `National Kids Achievers Genius Awards (For 3 to 18 yrs)`,
+                // `All Rounder Talent Hub Contest`,
               ].map((e, i) => (
                 <TouchableOpacity
                   style={style.rectangles}
@@ -373,27 +398,116 @@ const HomeScreen = ({props, navigation}: any) => {
                               </View>
                             </TouchableOpacity>
                           </View>
-                        ) : (
-                          <TouchableOpacity
-                            onPress={() => {
-                              checkRegistration(level, redirect);
+                        ) : i == 3 ? (
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: `${
+                                preRegisterUser?.allrounderUser?._id
+                                  ? 'space-between'
+                                  : 'flex-end'
+                              }`,
                             }}>
-                            <View
-                              style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                justifyContent: 'flex-end',
+                            {preRegisterUser?.allrounderUser?._id && (
+                              <TouchableOpacity
+                                onPress={() => {
+                                  newGlobalRegistration(level, redirect);
+                                }}>
+                                <View
+                                  style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContent: 'flex-end',
+                                  }}>
+                                  <Text style={style.registerLink}>
+                                    Contest Registration
+                                  </Text>
+                                  <Icon
+                                    name="keyboard-arrow-right"
+                                    color="#93278f"
+                                    size={25}
+                                  />
+                                </View>
+                              </TouchableOpacity>
+                            )}
+                            <TouchableOpacity
+                              onPress={() => {
+                                checkRegistration(level, redirect);
                               }}>
-                              <Text style={style.registerLink}>
-                                {actionTxt ?? 'Individual Registration'}
-                              </Text>
-                              <Icon
-                                name="keyboard-arrow-right"
-                                color="#93278f"
-                                size={25}
-                              />
-                            </View>
-                          </TouchableOpacity>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  justifyContent: 'flex-end',
+                                }}>
+                                <Text style={style.registerLink}>
+                                  {preRegisterUser?.allrounderUser?._id
+                                    ? 'My Dashboard'
+                                    : actionTxt ?? 'Contest Registration'}
+                                </Text>
+                                <Icon
+                                  name="keyboard-arrow-right"
+                                  color="#93278f"
+                                  size={25}
+                                />
+                              </View>
+                            </TouchableOpacity>
+                          </View>
+                        ) : (
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              justifyContent: `${
+                                preRegisterUser?.nationalUser?._id
+                                  ? 'space-between'
+                                  : 'flex-end'
+                              }`,
+                            }}>
+                            {preRegisterUser?.nationalUser?._id && (
+                              <TouchableOpacity
+                                onPress={() => {
+                                  newGlobalRegistration(level, redirect);
+                                }}>
+                                <View
+                                  style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContent: 'flex-end',
+                                  }}>
+                                  <Text style={style.registerLink}>
+                                    School Registration
+                                  </Text>
+                                  <Icon
+                                    name="keyboard-arrow-right"
+                                    color="#93278f"
+                                    size={25}
+                                  />
+                                </View>
+                              </TouchableOpacity>
+                            )}
+                            <TouchableOpacity
+                              onPress={() => {
+                                checkRegistration(level, redirect);
+                              }}>
+                              <View
+                                style={{
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  justifyContent: 'flex-end',
+                                }}>
+                                <Text style={style.registerLink}>
+                                  {preRegisterUser?.nationalUser?._id
+                                    ? 'My Dashboard'
+                                    : actionTxt ?? 'School Registration'}
+                                </Text>
+                                <Icon
+                                  name="keyboard-arrow-right"
+                                  color="#93278f"
+                                  size={25}
+                                />
+                              </View>
+                            </TouchableOpacity>
+                          </View>
                         )}
                       </View>
                     ),
