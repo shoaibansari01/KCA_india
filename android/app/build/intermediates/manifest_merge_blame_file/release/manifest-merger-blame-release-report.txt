@@ -1,95 +1,95 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.kcagroup"
-4    android:versionCode="33"
-5    android:versionName="1.0.6" >
+4    android:versionCode="35"
+5    android:versionName="1.0.8" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml
+8-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="34" />
-9-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml
+9-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:2:3-64
-11-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:2:20-62
+11-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:2:3-64
+11-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:2:20-62
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:3:3-76
-12-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:3:20-74
+12-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:3:3-76
+12-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:3:20-74
 13    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-13-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:4:3-75
-13-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:4:20-73
+13-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:4:3-75
+13-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:4:20-73
 14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-14-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:5:3-78
-14-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:5:20-76
+14-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:5:3-78
+14-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:5:20-76
 15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-15-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:6:3-77
-15-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:6:20-75
+15-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:6:3-77
+15-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:6:20-75
 16    <!--
 17         Required to keep CPU alive while downloading files
 18        (NOT to keep screen awake)
 19    -->
 20    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required to check whether Wi-Fi is enabled -->
-20-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:14:5-68
-20-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:14:22-65
+20-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:14:5-68
+20-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:14:22-65
 21    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Required to to download files without a notification -->
-21-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:23:5-76
-21-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:23:22-73
+21-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:23:5-76
+21-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:23:22-73
 22    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-22-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:32:5-88
-22-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:32:22-85
+22-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:32:5-88
+22-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:32:22-85
 23
 24    <queries>
-24-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:10:5-39:15
+24-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:10:5-39:15
 25        <intent>
-25-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:11:9-17:18
+25-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:11:9-17:18
 26            <action android:name="android.intent.action.VIEW" />
-26-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:14:9-60
-26-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:14:17-58
+26-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:14:9-60
+26-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:14:17-58
 27
 28            <data
-28-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:17:9-42
+28-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:17:9-42
 29                android:mimeType="*/*"
 30                android:scheme="*" />
-30-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:17:15-40
+30-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:17:15-40
 31        </intent>
 32        <intent>
-32-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:18:9-27:18
+32-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:18:9-27:18
 33            <action android:name="android.intent.action.VIEW" />
-33-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:14:9-60
-33-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:14:17-58
+33-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:14:9-60
+33-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:14:17-58
 34
 35            <category android:name="android.intent.category.BROWSABLE" />
-35-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:16:9-69
-35-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:16:19-67
+35-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:16:9-69
+35-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:16:19-67
 36
 37            <data
-37-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:17:9-42
+37-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:17:9-42
 38                android:host="pay"
 39                android:mimeType="*/*"
 40                android:scheme="upi" />
-40-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:17:15-40
+40-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:17:15-40
 41        </intent>
 42        <intent>
-42-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:28:9-30:18
+42-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:28:9-30:18
 43            <action android:name="android.intent.action.MAIN" />
-43-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:10:9-60
-43-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:10:17-58
+43-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:10:9-60
+43-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:10:17-58
 44        </intent>
 45        <intent>
-45-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:31:9-35:18
+45-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:31:9-35:18
 46            <action android:name="android.intent.action.SEND" />
-46-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:32:13-65
-46-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:32:21-62
+46-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:32:13-65
+46-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:32:21-62
 47
 48            <data android:mimeType="*/*" />
-48-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:17:9-42
+48-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:17:9-42
 49        </intent>
 50        <intent>
-50-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:36:9-38:18
+50-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:36:9-38:18
 51            <action android:name="rzp.device_token.share" />
-51-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:37:13-61
-51-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:37:21-58
+51-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:37:13-61
+51-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:37:21-58
 52        </intent>
 53    </queries> <!-- Required by older versions of Google Play services to create IID tokens -->
 54    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -108,131 +108,131 @@
 60-->[com.android.installreferrer:installreferrer:1.1.2] /Users/shoaibansari/.gradle/caches/transforms-3/7159fdde894990131f3ba6437117d8d3/transformed/jetified-installreferrer-1.1.2/AndroidManifest.xml:9:22-107
 61
 62    <application
-62-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:7:3-20:17
+62-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:7:3-20:17
 63        android:name="com.kcagroup.MainApplication"
-63-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:7:16-47
+63-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:7:16-47
 64        android:allowBackup="false"
-64-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:7:162-189
+64-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:7:162-189
 65        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 65-->[androidx.core:core:1.8.0] /Users/shoaibansari/.gradle/caches/transforms-3/9623e378e4dfc57c47793d0ffd25ee05/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
 66        android:icon="@mipmap/ic_launcher"
-66-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:7:81-115
+66-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:7:81-115
 67        android:label="@string/app_name"
-67-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:7:48-80
+67-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:7:48-80
 68        android:networkSecurityConfig="@xml/network_security_config"
-68-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:7:222-282
+68-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:7:222-282
 69        android:roundIcon="@mipmap/ic_launcher_round"
-69-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:7:116-161
+69-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:7:116-161
 70        android:theme="@style/AppTheme" >
-70-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:7:190-221
+70-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:7:190-221
 71        <activity
-71-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:8:5-19:16
+71-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:8:5-19:16
 72            android:name="com.kcagroup.MainActivity"
-72-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:8:15-43
+72-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:8:15-43
 73            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
-73-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:8:77-186
+73-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:8:77-186
 74            android:exported="true"
-74-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:8:262-285
+74-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:8:262-285
 75            android:label="@string/app_name"
-75-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:8:44-76
+75-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:8:44-76
 76            android:launchMode="singleTask"
-76-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:8:187-218
+76-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:8:187-218
 77            android:windowSoftInputMode="adjustResize" >
-77-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:8:219-261
+77-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:8:219-261
 78            <intent-filter>
-78-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:9:7-12:23
+78-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:9:7-12:23
 79                <action android:name="android.intent.action.MAIN" />
-79-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:10:9-60
-79-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:10:17-58
+79-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:10:9-60
+79-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:10:17-58
 80
 81                <category android:name="android.intent.category.LAUNCHER" />
-81-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:11:9-68
-81-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:11:19-66
+81-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:11:9-68
+81-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:11:19-66
 82            </intent-filter>
 83            <intent-filter>
-83-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:13:7-18:23
+83-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:13:7-18:23
 84                <action android:name="android.intent.action.VIEW" />
-84-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:14:9-60
-84-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:14:17-58
+84-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:14:9-60
+84-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:14:17-58
 85
 86                <category android:name="android.intent.category.DEFAULT" />
-86-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:15:9-67
-86-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:15:19-65
+86-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:15:9-67
+86-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:15:19-65
 87                <category android:name="android.intent.category.BROWSABLE" />
-87-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:16:9-69
-87-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:16:19-67
+87-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:16:9-69
+87-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:16:19-67
 88
 89                <data android:scheme="kcagroup" />
-89-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:17:9-42
-89-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:17:15-40
+89-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:17:9-42
+89-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:17:15-40
 90            </intent-filter>
 91        </activity>
 92        <activity
-92-->[:react-native-razorpay] /Users/shoaibansari/kca_native 2/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-10:86
+92-->[:react-native-razorpay] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-10:86
 93            android:name="com.razorpay.CheckoutActivity"
-93-->[:react-native-razorpay] /Users/shoaibansari/kca_native 2/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-57
+93-->[:react-native-razorpay] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-57
 94            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-94-->[:react-native-razorpay] /Users/shoaibansari/kca_native 2/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-83
+94-->[:react-native-razorpay] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-razorpay/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-83
 95            android:exported="false"
-95-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:45:13-37
+95-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:45:13-37
 96            android:theme="@style/CheckoutTheme" >
-96-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:46:13-49
+96-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:46:13-49
 97            <intent-filter>
-97-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:47:13-49:29
+97-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:47:13-49:29
 98                <action android:name="android.intent.action.MAIN" />
-98-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:10:9-60
-98-->/Users/shoaibansari/kca_native 2/android/app/src/main/AndroidManifest.xml:10:17-58
+98-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:10:9-60
+98-->/Users/shoaibansari/FL Projects/kca/kca_native 2/android/app/src/main/AndroidManifest.xml:10:17-58
 99            </intent-filter>
 100        </activity>
 101
 102        <provider
-102-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:35:9-43:20
+102-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:35:9-43:20
 103            android:name="com.ReactNativeBlobUtil.Utils.FileProvider"
-103-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:36:13-70
+103-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:36:13-70
 104            android:authorities="com.kcagroup.provider"
-104-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:37:13-60
+104-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:37:13-60
 105            android:exported="false"
-105-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:38:13-37
+105-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:38:13-37
 106            android:grantUriPermissions="true" >
-106-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:39:13-47
+106-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:39:13-47
 107            <meta-data
-107-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:40:13-42:58
+107-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:40:13-42:58
 108                android:name="android.support.FILE_PROVIDER_PATHS"
-108-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:41:17-67
+108-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:41:17-67
 109                android:resource="@xml/provider_paths" />
-109-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:42:17-55
+109-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:42:17-55
 110        </provider>
 111        <provider
-111-->[:react-native-webview] /Users/shoaibansari/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-16:20
+111-->[:react-native-webview] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-16:20
 112            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
-112-->[:react-native-webview] /Users/shoaibansari/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-83
+112-->[:react-native-webview] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-83
 113            android:authorities="com.kcagroup.fileprovider"
-113-->[:react-native-webview] /Users/shoaibansari/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-64
+113-->[:react-native-webview] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-64
 114            android:exported="false"
-114-->[:react-native-webview] /Users/shoaibansari/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-37
+114-->[:react-native-webview] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-37
 115            android:grantUriPermissions="true" >
-115-->[:react-native-webview] /Users/shoaibansari/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-47
+115-->[:react-native-webview] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-47
 116            <meta-data
-116-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:40:13-42:58
+116-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:40:13-42:58
 117                android:name="android.support.FILE_PROVIDER_PATHS"
-117-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:41:17-67
+117-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:41:17-67
 118                android:resource="@xml/file_provider_paths" />
-118-->[:react-native-blob-util] /Users/shoaibansari/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:42:17-55
+118-->[:react-native-blob-util] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-blob-util/android/build/intermediates/merged_manifest/release/AndroidManifest.xml:42:17-55
 119        </provider>
 120        <provider
-120-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:52:9-60:20
+120-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:52:9-60:20
 121            android:name="androidx.startup.InitializationProvider"
-121-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:53:13-67
+121-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:53:13-67
 122            android:authorities="com.kcagroup.androidx-startup"
-122-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:54:13-68
+122-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:54:13-68
 123            android:exported="false" >
-123-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:55:13-37
+123-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:55:13-37
 124            <meta-data
-124-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:57:13-59:52
+124-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:57:13-59:52
 125                android:name="com.razorpay.RazorpayInitializer"
-125-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:58:17-64
+125-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:58:17-64
 126                android:value="androidx.startup" />
-126-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:59:17-49
+126-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:59:17-49
 127            <meta-data
 127-->[androidx.emoji2:emoji2:1.2.0] /Users/shoaibansari/.gradle/caches/transforms-3/259206a491dfa4b8b6052b2b1c41d979/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
 128                android:name="androidx.emoji2.text.EmojiCompatInitializer"
@@ -248,20 +248,20 @@
 133        </provider>
 134
 135        <activity
-135-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:62:9-65:75
+135-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:62:9-65:75
 136            android:name="com.razorpay.MagicXActivity"
-136-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:63:13-55
+136-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:63:13-55
 137            android:exported="false"
-137-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:64:13-37
+137-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:64:13-37
 138            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-138-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:65:13-72
+138-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:65:13-72
 139
 140        <meta-data
-140-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:67:9-69:58
+140-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:67:9-69:58
 141            android:name="com.razorpay.plugin.googlepay_all"
-141-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:68:13-61
+141-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:68:13-61
 142            android:value="com.razorpay.RzpGpayMerged" />
-142-->[com.razorpay:standard-core:1.6.53] /Users/shoaibansari/.gradle/caches/transforms-3/d486cfc29db09947fe67f8ce57f55807/transformed/jetified-standard-core-1.6.53/AndroidManifest.xml:69:13-55
+142-->[com.razorpay:standard-core:1.6.54] /Users/shoaibansari/.gradle/caches/transforms-3/cdb9042b9486567470b7e46843b83303/transformed/jetified-standard-core-1.6.54/AndroidManifest.xml:69:13-55
 143
 144        <activity
 144-->[com.google.android.gms:play-services-auth:21.1.0] /Users/shoaibansari/.gradle/caches/transforms-3/83b9bc07ed4f39f269b5723692e7e14b/transformed/jetified-play-services-auth-21.1.0/AndroidManifest.xml:23:9-27:75

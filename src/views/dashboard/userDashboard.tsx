@@ -52,11 +52,11 @@ const UserDashboard = ({route, navigation}: any) => {
       icon: 'upload-file',
       redirect: `${isNational ? 'UploadData' : 'UploadArtWork'}`,
     },
-    {
-      name: isNational && 'View My Students',
-      icon: 'people',
-      redirect: 'ViewStudentData',
-    },
+    // {
+    //   name: isNational && 'View My Students',
+    //   icon: 'people',
+    //   redirect: 'ViewStudentData',
+    // },
     {
       name: isNational && 'Upload Photos',
       icon: 'add-photo-alternate',

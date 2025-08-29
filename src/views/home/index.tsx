@@ -54,14 +54,14 @@ export const cardsMappped = [
     actionTxt: 'Nomination Form',
     redirect: 'NominationForm',
   },
-  {
-    title: 'ALL ROUNDER TALENT HUB CONTEST',
-    formType: '',
-    img: 'homepage/allrounder.png',
-    level: 'allrounder',
-    actionTxt: 'Contest Registration',
-    redirect: 'AllRounderForm',
-  },
+  // {
+  //   title: 'ALL ROUNDER TALENT HUB CONTEST',
+  //   formType: '',
+  //   img: 'homepage/allrounder.png',
+  //   level: 'allrounder',
+  //   actionTxt: 'Contest Registration',
+  //   redirect: 'AllRounderForm',
+  // },
 ];
 
 const HomeScreen = ({props, navigation}: any) => {

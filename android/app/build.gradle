@@ -81,8 +81,8 @@ android {
         applicationId "com.kcagroup"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 33
-        versionName "1.0.6"
+        versionCode 35
+        versionName "1.0.8"
     }
     signingConfigs {
          release {

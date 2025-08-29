@@ -80,30 +80,53 @@ const token = async () => {
 
 export const postReq = async ({ url, data, returnKey, errorCallback = () => null, isAuthApi = true }: any) => {
     try {
+        console.log('postReq called with:', { url, isAuthApi, dataType: data instanceof FormData ? 'FormData' : typeof data });
+        
         const headers = {
             headers: {
                 ...(data instanceof FormData
-                    ? { 'Content-Type': 'multipart/form-data' }
+                    ? {} // Don't set Content-Type for FormData, let React Native handle it
                     : { 'Content-Type': 'application/json' }),
             },
         };
+        
+        console.log('Headers:', headers);
+        
         let res: any = null;
         if (isAuthApi) res = await AuthApi.post(`${url}`, data, headers);
         if (!isAuthApi) res = await GuestApi.post(`${url}`, data, headers);
+        
+        console.log('Response received:', { 
+            status: res?.status, 
+            hasData: !!res?.data,
+            fullResponse: res
+        });
+        
         if (returnKey && res?.data) return res?.data[returnKey]
-        if ((res.status === 200 || res.status === 201) && res?.data?.message) {
-            Snackbar.show({
-                text: `${res?.data?.message}`,
-                duration: Snackbar.LENGTH_LONG,
-                backgroundColor: "#04b20cf0",
-                marginBottom: 8
-            });
+        
+        // Check for successful response
+        if (res && (res.status === 200 || res.status === 201)) {
+            if (res.data?.message) {
+                Snackbar.show({
+                    text: `${res.data.message}`,
+                    duration: Snackbar.LENGTH_LONG,
+                    backgroundColor: "#04b20cf0",
+                    marginBottom: 8
+                });
+            }
             return res.data;
         }
+        
         return res?.data;
     } catch (e: any) {
+        console.log('postReq catch block:', e);
         const { response }: any = e;
-        if (!response) return false;
+        console.log('Response in catch:', response?.status, response?.data);
+        
+        if (!response) {
+            console.log('No response in error');
+            return false;
+        }
         if (response && response.status === 400 && response?.data?.errors && response?.data?.errors.length) {
             const errorObj: any = response?.data?.errors.reduce((acc: any, cur: any) => {
                 cur?.field && (acc[cur?.field] = cur?.message);
@@ -115,7 +138,8 @@ export const postReq = async ({ url, data, returnKey, errorCallback = () => null
         if (response && response.status === 500) {
             return { statusCode: response.status, ...response.data };
         }
-        // return false;
+        console.log('Unhandled error case, returning false');
+        return false;
     }
 }
 
@@ -167,6 +191,20 @@ AuthApi.interceptors.request.use(
     },
     (error) => {
 
+        console.log(error)
+        Promise.reject(error);
+    }
+);
+
+// Add authentication interceptors for FormApi
+FormApi.interceptors.request.use(
+    async (config) => {
+        if (await token()) {
+            config.headers["authorization"] = await token();
+        }
+        return config;
+    },
+    (error) => {
         console.log(error)
         Promise.reject(error);
     }
