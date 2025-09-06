@@ -32,6 +32,8 @@ import NominiPaymentSection from '../views/nominationForm/paymentPage';
 import ViewStudentData from '../views/forms/viewStudentData';
 import ExcelViewerScreen from '../views/forms/excelViewerScreen';
 import CertificateViewer from '../views/forms/certificateViewer';
+import AllRounderContestInfo from '../components/AllRounderContestInfo';
+import AllRounderPaymentScreen from '../components/AllRounderPaymentScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -176,6 +178,16 @@ const HomeStack = () => {
             <Stack.Screen
                 name='NominiPaymentSection'
                 component={NominiPaymentSection}
+                options={{ header: () => null }}
+            />
+            <Stack.Screen
+                name='AllRounderContestInfo'
+                component={AllRounderContestInfo}
+                options={{ header: () => null }}
+            />
+            <Stack.Screen
+                name='AllRounderPaymentScreen'
+                component={AllRounderPaymentScreen}
                 options={{ header: () => null }}
             />
         </Stack.Navigator>

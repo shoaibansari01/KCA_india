@@ -4,6 +4,9 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
+  Modal,
+  Alert,
+  Linking,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {ListItem} from 'react-native-elements';
@@ -18,7 +21,9 @@ const UserDashboard = ({route, navigation}: any) => {
   const {data} = route.params;
   const [paymentStatus, setPaymentStatus]: any = useState({});
   const isNational = data?.level != 'global' ? true : false;
+  const isAllRounder = data?.level === 'allrounder';
   const [loader, setLoader] = useState(false);
+  const [showAnnouncementModal, setShowAnnouncementModal] = useState(false);
 
   const arrMapped = [
     {
@@ -71,6 +76,42 @@ const UserDashboard = ({route, navigation}: any) => {
     // {name: 'Orders', icon: 'assignment-turned-in', redirect: ''},
   ];
 
+  // All-Rounder specific dashboard items
+  const allRounderTabs = [
+    {
+      name: 'ANNOUNCEMENT OF RESULTS',
+      icon: 'campaign',
+      action: () => setShowAnnouncementModal(true),
+    },
+    {
+      name: 'UPLOAD 2 MIN VIDEO',
+      icon: 'video-call',
+      action: () => handleVideoUpload(),
+    },
+    {
+      name: 'Download Best Performance Award E-Certificates (Every month of 30th)',
+      icon: 'file-download',
+      action: () => Alert.alert('Certificate', 'Certificate download will be available soon.'),
+    },
+  ];
+
+  const handleVideoUpload = () => {
+    Alert.alert(
+      'Upload Video',
+      'You can upload your 2-minute talent video through the Google Form link below.',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Open Google Form',
+          onPress: () => Linking.openURL('https://forms.gle/vhmDMcrSDu6K1eNcA'),
+        },
+      ]
+    );
+  };
+
   const checkPaymentStatus = async () => {
     setLoader(true);
     const res = await postReq({
@@ -114,27 +155,29 @@ const UserDashboard = ({route, navigation}: any) => {
         ) : (
           <View style={{marginTop: 20}}>
             <ScrollView>
-              {arrMapped?.map(({name, icon, redirect, title}, i) => (
+              {(isAllRounder ? allRounderTabs : arrMapped)?.map(({name, icon, redirect, title, action}, i) => (
                 <>
                   {name && (
                     <TouchableOpacity
                       onPress={() =>
-                        handleDetails({
-                          name,
-                          icon,
-                          redirect,
-                          title,
-                          data: {
-                            ...data,
-                            isPaymentDone:
-                              !!paymentStatus?.razorpay_payment_id?.length,
-                          },
-                        })
+                        isAllRounder 
+                          ? action()
+                          : handleDetails({
+                              name,
+                              icon,
+                              redirect,
+                              title,
+                              data: {
+                                ...data,
+                                isPaymentDone:
+                                  !!paymentStatus?.razorpay_payment_id?.length,
+                              },
+                            })
                       }
                       style={{
                         backgroundColor: `${
                           !!paymentStatus?.razorpay_payment_id?.length &&
-                          [2].includes(i)
+                          [2].includes(i) && !isAllRounder
                             ? '#dfdbdbab'
                             : '#ffffff00'
                         }`,
@@ -168,6 +211,75 @@ const UserDashboard = ({route, navigation}: any) => {
           </View>
         )}
       </View>
+
+      {/* Announcement Modal */}
+      <Modal
+        visible={showAnnouncementModal}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setShowAnnouncementModal(false)}>
+        <View style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        }}>
+          <View style={{
+            backgroundColor: 'white',
+            padding: 20,
+            borderRadius: 15,
+            width: '90%',
+            maxWidth: 350,
+          }}>
+            <View style={{
+              alignItems: 'center',
+              marginBottom: 20,
+            }}>
+              <Icon
+                name="campaign"
+                color="#93278f"
+                size={50}
+                style={{ marginBottom: 15 }}
+              />
+              <Text style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                color: '#93278f',
+                textAlign: 'center',
+                marginBottom: 10,
+              }}>
+                ANNOUNCEMENT OF RESULTS
+              </Text>
+              <Text style={{
+                fontSize: 16,
+                color: '#333',
+                textAlign: 'center',
+                lineHeight: 24,
+              }}>
+                Results will be announced 30th of every month.
+              </Text>
+            </View>
+            
+            <TouchableOpacity
+              onPress={() => setShowAnnouncementModal(false)}
+              style={{
+                backgroundColor: '#93278f',
+                paddingVertical: 12,
+                paddingHorizontal: 30,
+                borderRadius: 8,
+                alignItems: 'center',
+              }}>
+              <Text style={{
+                color: 'white',
+                fontSize: 16,
+                fontWeight: 'bold',
+              }}>
+                Got it!
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };

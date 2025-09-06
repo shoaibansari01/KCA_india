@@ -11,26 +11,19 @@ import DropDown from './dropDown';
 
 // Class Options
 const classOptions = [
-  {value: 'PreNursery', label: 'Pre-Nursery'},
-  {value: 'Nursery', label: 'Nursery'},
-  {value: 'LKG', label: 'LKG'},
-  {value: 'UKG', label: 'UKG'},
-  {value: 'Class1', label: 'Class 1st'},
-  {value: 'Class2', label: 'Class 2nd'},
-  {value: 'Class3', label: 'Class 3rd'},
-  {value: 'Class4', label: 'Class 4th'},
-  {value: 'Class5', label: 'Class 5th'},
-  {value: 'Class6', label: 'Class 6th'},
-  {value: 'Class7', label: 'Class 7th'},
-  {value: 'Class8', label: 'Class 8th'},
-  {value: 'Class9', label: 'Class 9th'},
-  {value: 'Class10', label: 'Class 10th'},
+  { value: 'Nursery', label: 'Nursery' },
+  { value: 'KG', label: 'KG-1 & KG-2' },
+  { value: 'Class1-2', label: '1st & 2nd' },
+  { value: 'Class3-4', label: '3rd & 4th' },
+  { value: 'Class5-6', label: '5th & 6th' },
+  { value: 'Class7-8', label: '7th & 8th' },
+  { value: 'Class9-10', label: '9th & 10th' },
 ];
 
-// Age Options (1-15 years)
-const ageOptions = Array.from({length: 15}, (_, i) => ({
-  value: (i + 1).toString(),
-  label: `${i + 1} year${i + 1 > 1 ? 's' : ''}`,
+// Age Options (3-15 years)
+const ageOptions = Array.from({ length: 13 }, (_, i) => ({
+  value: (i + 3).toString(),
+  label: `${i + 3} year${i + 3 > 1 ? 's' : ''}`,
 }));
 
 // Talent Awards Options
@@ -47,6 +40,9 @@ const talentOptions = [
   {value: 'bestChildSelfIntroduction', label: 'Best Child Self Introduction Award'},
 ];
 
+// Fee per talent
+const TALENT_FEE = 60;
+
 const AllRounderForm = ({ navigation }: any) => {
   const { authData }: any = useContext(AuthContext);
   const [values, setValues] = useState({
@@ -58,7 +54,7 @@ const AllRounderForm = ({ navigation }: any) => {
     school_pin: '',
     class_name: '',
     age: '',
-    talent_category: '',
+    talent_categories: [] as string[],
     parent_name: '',
     email_id: '',
     whatsapp_number: '',
@@ -66,11 +62,28 @@ const AllRounderForm = ({ navigation }: any) => {
   const [errors, setErrors] = useState<any>({});
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (name: string, value: string) => {
+  const handleChange = (name: string, value: string | string[]) => {
     setValues(prev => ({ ...prev, [name]: value }));
     if (errors[name as keyof typeof errors]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
+  };
+
+  const handleTalentToggle = (talentValue: string) => {
+    const currentTalents = values.talent_categories;
+    let newTalents;
+    
+    if (currentTalents.includes(talentValue)) {
+      newTalents = currentTalents.filter(t => t !== talentValue);
+    } else {
+      newTalents = [...currentTalents, talentValue];
+    }
+    
+    handleChange('talent_categories', newTalents);
+  };
+
+  const calculateTotalFee = () => {
+    return values.talent_categories.length * TALENT_FEE;
   };
 
   const validate = () => {
@@ -103,8 +116,8 @@ const AllRounderForm = ({ navigation }: any) => {
     if (!values.age) {
       newErrors.age = 'Age is required';
     }
-    if (!values.talent_category) {
-      newErrors.talent_category = 'Talent category is required';
+    if (values.talent_categories.length === 0) {
+      newErrors.talent_categories = 'At least one talent category is required';
     }
     if (!values.parent_name.trim()) {
       newErrors.parent_name = 'Parent name is required';
@@ -124,34 +137,37 @@ const AllRounderForm = ({ navigation }: any) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async () => {
+  const handlePayment = async () => {
     if (!validate()) return;
     
+    const totalFee = calculateTotalFee();
+    
+    Alert.alert(
+      'Payment Confirmation',
+      `Total Fee: ₹${totalFee}\nSelected Talents: ${values.talent_categories.length}\nFees Per Talent: ₹${TALENT_FEE}`,
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Pay Now',
+          onPress: () => processPayment(totalFee),
+        },
+      ]
+    );
+  };
+
+  const processPayment = async (totalFee: number) => {
     setLoading(true);
     try {
-      const res = await postReq({
-        url: 'user-registration',
-        data: {
-          ...values,
-          formType: 'A',
-          userId: authData?.user?.userId,
-        },
+      navigation.navigate('AllRounderPaymentScreen', {
+        formData: values,
+        totalFee,
+        selectedTalents: values.talent_categories,
       });
-      
-      if (res && res?.authdata) {
-        littleLegs(200);
-        navigation.navigate('UserDashboard', {
-          data: {
-            level: 'allrounder',
-            values: { ...values, ...res?.authdata },
-            userInfo: res?.authdata,
-          },
-        });
-      } else {
-        Alert.alert('Error', 'Registration failed. Please try again.');
-      }
     } catch (error) {
-      Alert.alert('Error', 'Something went wrong. Please try again.');
+      Alert.alert('Error', 'Payment processing failed. Please try again.');
     }
     setLoading(false);
   };
@@ -164,7 +180,7 @@ const AllRounderForm = ({ navigation }: any) => {
           style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
           <Icon name="arrow-back" color="#130F26" size={22} style={{ marginRight: 14 }} />
           <Text style={[style.fs18, style.boldText, style.textColorBlack]}>
-            All Rounder Talent Hub Contest Registration
+            Fees of National All-Rounder Talent Hub Contests
           </Text>
         </TouchableOpacity>
 
@@ -231,7 +247,7 @@ const AllRounderForm = ({ navigation }: any) => {
           />
 
           <View style={style.selectBox}>
-            <Text style={style.selectLabel}>Class (dropdown)</Text>
+            <Text style={style.selectLabel}>Categories</Text>
             <DropDown
               data={classOptions}
               label="Class"
@@ -244,7 +260,7 @@ const AllRounderForm = ({ navigation }: any) => {
           </View>
 
           <View style={style.selectBox}>
-            <Text style={style.selectLabel}>Age (dropdown from 1year to 15 years)</Text>
+            <Text style={style.selectLabel}>Age (from 3 year to 15 years)</Text>
             <DropDown
               data={ageOptions}
               label="Age"
@@ -257,16 +273,56 @@ const AllRounderForm = ({ navigation }: any) => {
           </View>
 
           <View style={style.selectBox}>
-            <Text style={style.selectLabel}>Select as per your Talent</Text>
-            <DropDown
-              data={talentOptions}
-              label="Talent Category"
-              handleChange={({name, value}: any) => handleChange(name, value)}
-              name="talent_category"
-              placeholder="Select talent category"
-              value={values.talent_category}
-              error={errors.talent_category}
-            />
+            <Text style={style.selectLabel}>Select as per your Talent (Multiple selection allowed)</Text>
+            <Text style={{ fontSize: 12, color: '#6B7280', marginBottom: 10 }}>
+              ₹{TALENT_FEE} per talent • Selected: {values.talent_categories.length} • Total: ₹{calculateTotalFee()}
+            </Text>
+            {talentOptions.map((talent) => (
+              <TouchableOpacity
+                key={talent.value}
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  paddingVertical: 12,
+                  paddingHorizontal: 15,
+                  marginBottom: 8,
+                  backgroundColor: values.talent_categories.includes(talent.value) ? '#E0E7FF' : 'white',
+                  borderRadius: 8,
+                  borderWidth: 1,
+                  borderColor: values.talent_categories.includes(talent.value) ? '#4F46E5' : '#D1D5DB',
+                }}
+                onPress={() => handleTalentToggle(talent.value)}
+              >
+                <View
+                  style={{
+                    width: 20,
+                    height: 20,
+                    borderWidth: 2,
+                    borderColor: values.talent_categories.includes(talent.value) ? '#4F46E5' : '#D1D5DB',
+                    borderRadius: 3,
+                    marginRight: 12,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: values.talent_categories.includes(talent.value) ? '#4F46E5' : 'white',
+                  }}
+                >
+                  {values.talent_categories.includes(talent.value) && (
+                    <Text style={{ color: 'white', fontSize: 14, fontWeight: 'bold' }}>✓</Text>
+                  )}
+                </View>
+                <Text style={{
+                  flex: 1,
+                  fontSize: 16,
+                  color: values.talent_categories.includes(talent.value) ? '#4F46E5' : '#374151',
+                  fontWeight: values.talent_categories.includes(talent.value) ? '600' : '400',
+                }}>
+                  {talent.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
+            {errors.talent_categories && (
+              <Text style={{ color: 'red', fontSize: 12, marginTop: 5 }}>{errors.talent_categories}</Text>
+            )}
           </View>
 
           <Input
@@ -301,11 +357,46 @@ const AllRounderForm = ({ navigation }: any) => {
             keyboardType="phone-pad"
           />
 
+          {values.talent_categories.length > 0 && (
+            <View style={{
+              backgroundColor: '#F3F4F6',
+              padding: 15,
+              borderRadius: 10,
+              marginVertical: 10,
+            }}>
+              <Text style={{
+                fontSize: 16,
+                fontWeight: '600',
+                color: '#374151',
+                marginBottom: 8,
+              }}>
+                Payment Summary
+              </Text>
+              <Text style={{ fontSize: 14, color: '#6B7280' }}>
+                Selected Talents: {values.talent_categories.length}
+              </Text>
+              <Text style={{ fontSize: 14, color: '#6B7280' }}>
+                Fees per talents: ₹{TALENT_FEE}
+              </Text>
+              <Text style={{
+                fontSize: 18,
+                fontWeight: 'bold',
+                color: '#10B981',
+                marginTop: 8,
+              }}>
+                Total Amount: ₹{calculateTotalFee()}
+              </Text>
+            </View>
+          )}
+
           <Button
-            title={loading ? 'Submitting...' : 'Submit Registration'}
-            onPress={handleSubmit}
-            disabled={loading}
-            buttonStyle={{ backgroundColor: '#93278f', marginTop: 20 }}
+            title={loading ? 'Processing...' : `Pay ₹${calculateTotalFee()}`}
+            onPress={handlePayment}
+            disabled={loading || values.talent_categories.length === 0}
+            buttonStyle={{ 
+              backgroundColor: values.talent_categories.length > 0 ? '#10B981' : '#93278f', 
+              marginTop: 20 
+            }}
             titleStyle={{ color: '#fff' }}
           />
         </ScrollView>

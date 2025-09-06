@@ -5,6 +5,7 @@ import Snackbar from 'react-native-snackbar';
 import RNRestart from 'react-native-restart';
 import ReactNativeBlobUtil from 'react-native-blob-util';
 import { ToastMessage } from './normConsistent';
+import { encryptToken, decryptToken } from './encryption';
 
 
 // FOR LOCAL
@@ -184,13 +185,17 @@ const getReq = async ({ url, returnKey, errorCallback = () => null, isAuthApi = 
 
 AuthApi.interceptors.request.use(
     async (config) => {
-        if (await token()) {
-            config.headers["authorization"] = await token();
+        const accessToken = await token();
+        if (accessToken) {
+            console.log('Original token:', accessToken?.substring(0, 20) + '...');
+            // Using encryptToken (which currently returns plain token)
+            const encryptedToken = encryptToken(accessToken);
+            console.log('Token after encryption function:', encryptedToken?.substring(0, 20) + '...');
+            config.headers["authorization"] = encryptedToken;
         }
         return config;
     },
     (error) => {
-
         console.log(error)
         Promise.reject(error);
     }
@@ -199,16 +204,83 @@ AuthApi.interceptors.request.use(
 // Add authentication interceptors for FormApi
 FormApi.interceptors.request.use(
     async (config) => {
-        if (await token()) {
-            config.headers["authorization"] = await token();
+        const accessToken = await token();
+        console.log('FormApi - Token exists:', !!accessToken);
+        if (accessToken) {
+            console.log('FormApi - Original token:', accessToken?.substring(0, 20) + '...');
+            // The token might be encrypted - try decrypting it first
+            try {
+                const decryptedToken = decryptToken(accessToken);
+                if (decryptedToken && decryptedToken !== accessToken) {
+                    console.log('FormApi - Token appears encrypted, using decrypted version:', decryptedToken.substring(0, 20) + '...');
+                    config.headers["authorization"] = decryptedToken;
+                } else {
+                    console.log('FormApi - Token not encrypted or decryption failed, using as-is');
+                    config.headers["authorization"] = accessToken;
+                }
+            } catch (error) {
+                console.log('FormApi - Decryption error, using token as-is:', error);
+                config.headers["authorization"] = accessToken;
+            }
+        } else {
+            console.log('FormApi - No token available');
         }
         return config;
     },
     (error) => {
-        console.log(error)
+        console.log('FormApi request interceptor error:', error)
         Promise.reject(error);
     }
 );
+
+// Add response interceptor for FormApi to handle 401 errors
+FormApi.interceptors.response.use(
+    async (response) => response,
+    async function (error) {
+        let originalRequest = error.config;
+        const { response: errRes } = error;
+        const { status, data } = errRes || {};
+        
+        console.log('FormApi response error:', { status, data, message: data?.errors?.[0]?.message });
+        
+        if (status === 401 && (data?.errors?.[0]?.message === "jwt expired" || data?.errors?.[0]?.message === "TokenNotMatched") && !originalRequest._retry) {
+            console.log('FormApi: Token expired/invalid, attempting refresh...');
+            originalRequest._retry = true;
+            
+            const itemData: any = await AsyncStorage.getItem(accessTokenKey);
+            const x = JSON.parse(itemData);
+            const { refreshToken } = x;
+            
+            try {
+                const tokenResponse = await GuestApi.post(`/refresh-token`, { refresh_token: refreshToken });
+                const { status: ref_status, data: ref_data } = tokenResponse;
+                
+                if (ref_status === 201 && ref_data.status) {
+                    const { accessToken } = ref_data?.data;
+                    console.log('FormApi: Token refreshed successfully, new token:', accessToken?.substring(0, 20) + '...');
+                    
+                    // Update stored token
+                    let upData = x;
+                    upData.accessToken = accessToken; // Fix: use consistent key name
+                    await AsyncStorage.setItem(accessTokenKey, JSON.stringify(upData));
+                    
+                    // Retry original request with new token - don't go through interceptor again
+                    originalRequest.headers['authorization'] = accessToken;
+                    originalRequest._retry = true; // Prevent infinite loop
+                    return FormApi(originalRequest);
+                } else {
+                    console.log('FormApi: Token refresh failed, redirecting to login');
+                    // Handle failed refresh - could navigate to login
+                }
+            } catch (refreshError) {
+                console.log('FormApi: Token refresh error:', refreshError);
+            }
+        }
+        
+        return Promise.reject(error);
+    }
+);
+
 AuthApi.interceptors.response.use(
     async (response) => ({ ...response, data: response?.data }),
     async function (error) {
@@ -224,7 +296,7 @@ AuthApi.interceptors.response.use(
             });
             return data.errors;
         }
-        if (status == 401 && data.errors[0]?.message == "jwt expired") {
+        if (status == 401 && (data.errors[0]?.message == "jwt expired" || data.errors[0]?.message == "TokenNotMatched")) {
             const itemData: any = await AsyncStorage.getItem(accessTokenKey);
             const x = JSON.parse(itemData);
             const userRefLocalStorage = x;
@@ -234,7 +306,8 @@ AuthApi.interceptors.response.use(
                 const { status: ref_status, data: ref_data } = tokenResponse;
                 if (ref_status === 201 && ref_data.status) {
                     const { accessToken } = ref_data?.data;
-                    originalRequest.headers['authorization'] = accessToken;
+                    // Using encryptToken (which currently returns plain token)
+                    originalRequest.headers['authorization'] = encryptToken(accessToken);
                     let upData = userRefLocalStorage;
                     upData.access_token = accessToken;
                     await AsyncStorage.setItem(accessTokenKey, JSON.stringify(upData));

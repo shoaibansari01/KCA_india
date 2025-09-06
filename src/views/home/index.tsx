@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -10,25 +10,54 @@ import {
   Alert,
   Modal,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {style} from '../../style/style';
-import {Icon} from 'react-native-elements/dist/icons/Icon';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { style } from '../../style/style';
+import { Icon } from 'react-native-elements/dist/icons/Icon';
 import Header from '../../components/header';
-import {postReq} from '../../helper/http';
-import {AuthContext} from '../../helper/contex';
-import {s3PreFixUrl} from '../../helper/routes';
-import {ActivityIndicator} from 'react-native-paper';
-import {
-  responsiveFontSize,
-  responsiveHeight,
-} from 'react-native-responsive-dimensions';
-import {AnimatedIcon} from '../../components/animatedIcon';
+import { postReq } from '../../helper/http';
+import { AuthContext } from '../../helper/contex';
+import { s3PreFixUrl } from '../../helper/routes';
+import { ActivityIndicator } from 'react-native-paper';
+import { responsiveFontSize, responsiveHeight } from 'react-native-responsive-dimensions';
+import { AnimatedIcon } from '../../components/animatedIcon';
 import Slider from '../../components/slider';
-import {AnimatedText} from '../../components/animatedText';
+import { AnimatedText } from '../../components/animatedText';
 import ImageModal from 'react-native-image-modal';
 import ResultPage from '../../components/resultPage';
 
+// Updated ageOptions for ages 3 to 15
+const ageOptions = Array.from({ length: 13 }, (_, i) => ({
+  value: (i + 3).toString(),
+  label: `${i + 3} year${i + 3 > 1 ? 's' : ''}`,
+}));
+
+// Updated classOptions with new labels
+const classOptions = [
+  { value: 'PreNursery', label: 'Nursery' },
+  { value: 'Nursery', label: 'Nursery' },
+  { value: 'LKG', label: 'KG-1 & KG-2' },
+  { value: 'UKG', label: 'KG-1 & KG-2' },
+  { value: 'Class1', label: '1st & 2nd' },
+  { value: 'Class2', label: '1st & 2nd' },
+  { value: 'Class3', label: '3rd & 4th' },
+  { value: 'Class4', label: '3rd & 4th' },
+  { value: 'Class5', label: '5th & 6th' },
+  { value: 'Class6', label: '5th & 6th' },
+  { value: 'Class7', label: '7th & 8th' },
+  { value: 'Class8', label: '7th & 8th' },
+  { value: 'Class9', label: '9th & 10th' },
+  { value: 'Class10', label: '9th & 10th' },
+];
+
 export const cardsMappped = [
+  {
+    title: 'National All-Rounder Talent Hub Contests (For 3 years to 15 years)',
+    formType: '',
+    img: 'homepage/allrounder.png',
+    level: 'allrounder',
+    actionTxt: 'Individual Registration',
+    redirect: 'AllRounderContestInfo',
+  },
   {
     title:
       'NATIONAL TALENT SEARCH DRAWING AND PAINTING SCHOLARSHIP COMPETITION 2025 (Open for Nursery to class 10th Students)',
@@ -51,21 +80,13 @@ export const cardsMappped = [
     title: 'National Kids Achievers Genius Awards (For 3 to 18 years)',
     formType: '',
     img: 'homepage/kidsAchiversGeniusAward.JPG',
-    actionTxt: 'Nomination Form',
+    actionTxt: 'Individual Registration',
     redirect: 'NominationForm',
   },
-  // {
-  //   title: 'ALL ROUNDER TALENT HUB CONTEST',
-  //   formType: '',
-  //   img: 'homepage/allrounder.png',
-  //   level: 'allrounder',
-  //   actionTxt: 'Contest Registration',
-  //   redirect: 'AllRounderForm',
-  // },
 ];
 
-const HomeScreen = ({props, navigation}: any) => {
-  const {authData}: any = useContext(AuthContext);
+const HomeScreen = ({ props, navigation }: any) => {
+  const { authData }: any = useContext(AuthContext);
   const [preRegisterUser, setPreRegisterUser]: any = useState({
     nationalUser: {},
     globalUser: {},
@@ -89,7 +110,6 @@ const HomeScreen = ({props, navigation}: any) => {
       url: 'get-banners',
       returnKey: 'data',
     });
-    // console.log(res,'resresres')
     res && setBannerData(res);
     setBannerLoader(false);
   };
@@ -113,35 +133,35 @@ const HomeScreen = ({props, navigation}: any) => {
   };
 
   const checkRegistration = async (level: any, redirect: any) => {
-    if (redirect == 'NominationForm') navigation.navigate(redirect);
-    if (redirect == 'AllRounderForm') {
-      // Check if allrounder user is already registered
+    if (redirect === 'NominationForm') {
+      navigation.navigate(redirect);
+      return;
+    }
+    if (redirect === 'AllRounderContestInfo' || redirect === 'AllRounderForm' || level === 'allrounder') {
       if (preRegisterUser?.allrounderUser?._id) {
         navigation.navigate('UserDashboard', {
           data: {
-            values: {...preRegisterUser.allrounderUser}, 
-            level: 'allrounder'
-          }
+            values: { ...preRegisterUser.allrounderUser },
+            level: 'allrounder',
+          },
         });
       } else {
         navigation.navigate(redirect);
       }
       return;
     }
-    if (redirect != 'NominationForm' && redirect != 'AllRounderForm') {
-      const _ = await postReq({
-        url: 'check-register',
-        data: {
-          userId: authData?.user?.userId,
-          formType: level == 'global' ? 'G' : level == 'national' ? 'N' : level == 'allrounder' ? 'A' : 'N',
-        },
-        returnKey: 'authdata',
-      });
-      if (_?.isVerified) {
-        navigation.navigate('UserDashboard', {data: {values: {..._}, level}});
-      } else {
-        navigation.navigate(redirect, {data: level});
-      }
+    const _ = await postReq({
+      url: 'check-register',
+      data: {
+        userId: authData?.user?.userId,
+        formType: level === 'global' ? 'G' : level === 'national' ? 'N' : level === 'allrounder' ? 'A' : 'N',
+      },
+      returnKey: 'authdata',
+    });
+    if (_?.isVerified) {
+      navigation.navigate('UserDashboard', { data: { values: { ..._ }, level } });
+    } else {
+      navigation.navigate(redirect, { data: level });
     }
   };
 
@@ -156,7 +176,7 @@ const HomeScreen = ({props, navigation}: any) => {
   };
 
   const newGlobalRegistration = async (level: any, redirect: any) => {
-    navigation.navigate(redirect, {data: level});
+    navigation.navigate(redirect, { data: level });
   };
 
   const handleZoom = (path: any) => {
@@ -175,31 +195,10 @@ const HomeScreen = ({props, navigation}: any) => {
   }, []);
 
   return (
-    <SafeAreaView style={{marginBottom: 20}}>
+    <SafeAreaView style={{ marginBottom: 20 }}>
       <Header />
-      <ScrollView
-        style={{marginBottom: 30}}
-        contentContainerStyle={{flexGrow: 1}}>
-        <View style={{paddingHorizontal: 20, marginBottom: 20}}>
-          {/* <TouchableOpacity >
-                        <View style={{ backgroundColor: "#CDDFFF", paddingVertical: 20, alignItems: "center", marginTop: 10, borderRadius: 10, flexDirection: "column", height: responsiveHeight(11) }}>
-                            <View style={{ marginBottom: 10 }}>
-                                <Text style={[style.fs20, style.boldText, style.textColorBlack]}>WELCOME TO KCA</Text>
-                            </View>
-                            <View style={{ marginBottom: 10, position: 'relative', alignItems: "center" }}>
-                                <Text style={[style.fs16, style.boldText, style.textColorBlack]}>Watch Video of KCA</Text>
-                                <View style={{ position: "absolute", opacity: 0.5, top: -8 }}>
-                                    <AnimatedIcon name="smart-display" color="#93278f" size={40} />
-                                </View>
-                            </View>
-                        </View>
-                    </TouchableOpacity> */}
-          {/* <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", marginBottom: 7 }}>
-                        <View>
-                            <Slider  {...{ data: bannerData, handleImagePress, handleVideoPress }} />
-                        </View>
-                    </View>  */}
-
+      <ScrollView style={{ marginBottom: 30 }} contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
           {bannerState ? (
             <View
               style={{
@@ -209,15 +208,15 @@ const HomeScreen = ({props, navigation}: any) => {
                 height: responsiveHeight(70),
               }}>
               {[
+                'National All-Rounder Talent Hub Contests (For Nursery to Class 10th Students)',
                 `National Talent Search Drawing and Painting Scholarship Competition (For Nursery to class 10th students)`,
                 `Global Art Exhibition (Open For All)`,
                 `National Kids Achievers Genius Awards (For 3 to 18 yrs)`,
-                // `All Rounder Talent Hub Contest`,
               ].map((e, i) => (
                 <TouchableOpacity
                   style={style.rectangles}
-                  onPress={() => setBannerState(false)}>
-                  {/* <AnimatedText name={e} /> */}
+                  onPress={() => setBannerState(false)}
+                  key={i}>
                   <Text style={style.rectanglesText}>{e}</Text>
                 </TouchableOpacity>
               ))}
@@ -242,7 +241,7 @@ const HomeScreen = ({props, navigation}: any) => {
                     </View>
                   </View>
                   {cardsMappped?.map(
-                    ({title, actionTxt, formType, img, level, redirect}, i) => (
+                    ({ title, actionTxt, formType, img, level, redirect }, i) => (
                       <View style={style.cardBody} key={i}>
                         <TouchableOpacity onPress={() => handleZoom(img)}>
                           <View
@@ -261,7 +260,7 @@ const HomeScreen = ({props, navigation}: any) => {
                                   objectFit: 'fill',
                                 },
                               ]}
-                              source={{uri: `${s3PreFixUrl}${img}`}}
+                              source={{ uri: `${s3PreFixUrl}${img}` }}
                             />
                           </View>
                         </TouchableOpacity>
@@ -287,41 +286,23 @@ const HomeScreen = ({props, navigation}: any) => {
                             </Text>
                           </View>
                         )}
-                        {i == 2 ? (
-                          <View
-                            style={{
-                              flexDirection: 'row',
-                              justifyContent: `${
-                                preRegisterUser?.globalUser?._id
-                                  ? 'space-between'
-                                  : 'flex-end'
-                              }`,
-                            }}>
-                            {preRegisterUser?.globalUser?._id && (
-                              <TouchableOpacity
-                                onPress={() => {
-                                  newGlobalRegistration(level, redirect);
-                                }}>
-                                <View
-                                  style={{
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                    justifyContent: 'flex-end',
-                                  }}>
-                                  <Text style={style.registerLink}>
-                                    Individual Registration
-                                  </Text>
-                                  <Icon
-                                    name="keyboard-arrow-right"
-                                    color="#93278f"
-                                    size={25}
-                                  />
-                                </View>
-                              </TouchableOpacity>
-                            )}
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            justifyContent: `${
+                              (i === 0 && preRegisterUser?.allrounderUser?._id) ||
+                              (i === 1 && preRegisterUser?.nationalUser?._id) ||
+                              (i === 2 && preRegisterUser?.globalUser?._id)
+                                ? 'space-between'
+                                : 'flex-end'
+                            }`,
+                          }}>
+                          {(i === 0 && preRegisterUser?.allrounderUser?._id) ||
+                          (i === 1 && preRegisterUser?.nationalUser?._id) ||
+                          (i === 2 && preRegisterUser?.globalUser?._id) ? (
                             <TouchableOpacity
                               onPress={() => {
-                                checkRegistration(level, redirect);
+                                newGlobalRegistration(level, redirect);
                               }}>
                               <View
                                 style={{
@@ -329,186 +310,34 @@ const HomeScreen = ({props, navigation}: any) => {
                                   alignItems: 'center',
                                   justifyContent: 'flex-end',
                                 }}>
-                                <Text style={style.registerLink}>
-                                  {preRegisterUser?.globalUser?._id
-                                    ? 'My Dashboard'
-                                    : 'Individual Registration'}
-                                </Text>
-                                <Icon
-                                  name="keyboard-arrow-right"
-                                  color="#93278f"
-                                  size={25}
-                                />
+                                <Text style={style.registerLink}>{actionTxt}</Text>
+                                <Icon name="keyboard-arrow-right" color="#93278f" size={25} />
                               </View>
                             </TouchableOpacity>
-                          </View>
-                        ) : i == 1 ? (
-                          <View
-                            style={{
-                              flexDirection: 'row',
-                              justifyContent: `${
-                                preRegisterUser?.nationalUser?._id
-                                  ? 'space-between'
-                                  : 'flex-end'
-                              }`,
+                          ) : null}
+                          <TouchableOpacity
+                            onPress={() => {
+                              checkRegistration(level, redirect);
                             }}>
-                            {preRegisterUser?.nationalUser?._id && (
-                              <TouchableOpacity
-                                onPress={() => {
-                                  newGlobalRegistration(level, redirect);
-                                }}>
-                                <View
-                                  style={{
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                    justifyContent: 'flex-end',
-                                  }}>
-                                  <Text style={style.registerLink}>
-                                   Individual Registration
-                                  </Text>
-                                  <Icon
-                                    name="keyboard-arrow-right"
-                                    color="#93278f"
-                                    size={25}
-                                  />
-                                </View>
-                              </TouchableOpacity>
-                            )}
-
-                            <TouchableOpacity
-                              onPress={() => {
-                                checkRegistration(level, redirect);
+                            <View
+                              style={{
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'flex-end',
                               }}>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  justifyContent: 'flex-end',
-                                }}>
-                                <Text style={style.registerLink}>
-                                  {preRegisterUser?.nationalUser?._id
-                                    ? 'My Dashboard'
-                                    : 'Individual Registration'}
-                                </Text>
-                                <Icon
-                                  name="keyboard-arrow-right"
-                                  color="#93278f"
-                                  size={25}
-                                />
-                              </View>
-                            </TouchableOpacity>
-                          </View>
-                        ) : i == 3 ? (
-                          <View
-                            style={{
-                              flexDirection: 'row',
-                              justifyContent: `${
-                                preRegisterUser?.allrounderUser?._id
-                                  ? 'space-between'
-                                  : 'flex-end'
-                              }`,
-                            }}>
-                            {preRegisterUser?.allrounderUser?._id && (
-                              <TouchableOpacity
-                                onPress={() => {
-                                  newGlobalRegistration(level, redirect);
-                                }}>
-                                <View
-                                  style={{
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                    justifyContent: 'flex-end',
-                                  }}>
-                                  <Text style={style.registerLink}>
-                                    Contest Registration
-                                  </Text>
-                                  <Icon
-                                    name="keyboard-arrow-right"
-                                    color="#93278f"
-                                    size={25}
-                                  />
-                                </View>
-                              </TouchableOpacity>
-                            )}
-                            <TouchableOpacity
-                              onPress={() => {
-                                checkRegistration(level, redirect);
-                              }}>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  justifyContent: 'flex-end',
-                                }}>
-                                <Text style={style.registerLink}>
-                                  {preRegisterUser?.allrounderUser?._id
-                                    ? 'My Dashboard'
-                                    : actionTxt ?? 'Contest Registration'}
-                                </Text>
-                                <Icon
-                                  name="keyboard-arrow-right"
-                                  color="#93278f"
-                                  size={25}
-                                />
-                              </View>
-                            </TouchableOpacity>
-                          </View>
-                        ) : (
-                          <View
-                            style={{
-                              flexDirection: 'row',
-                              justifyContent: `${
-                                preRegisterUser?.nationalUser?._id
-                                  ? 'space-between'
-                                  : 'flex-end'
-                              }`,
-                            }}>
-                            {preRegisterUser?.nationalUser?._id && (
-                              <TouchableOpacity
-                                onPress={() => {
-                                  newGlobalRegistration(level, redirect);
-                                }}>
-                                <View
-                                  style={{
-                                    flexDirection: 'row',
-                                    alignItems: 'center',
-                                    justifyContent: 'flex-end',
-                                  }}>
-                                  <Text style={style.registerLink}>
-                                    School Registration
-                                  </Text>
-                                  <Icon
-                                    name="keyboard-arrow-right"
-                                    color="#93278f"
-                                    size={25}
-                                  />
-                                </View>
-                              </TouchableOpacity>
-                            )}
-                            <TouchableOpacity
-                              onPress={() => {
-                                checkRegistration(level, redirect);
-                              }}>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  alignItems: 'center',
-                                  justifyContent: 'flex-end',
-                                }}>
-                                <Text style={style.registerLink}>
-                                  {preRegisterUser?.nationalUser?._id
-                                    ? 'My Dashboard'
-                                    : actionTxt ?? 'School Registration'}
-                                </Text>
-                                <Icon
-                                  name="keyboard-arrow-right"
-                                  color="#93278f"
-                                  size={25}
-                                />
-                              </View>
-                            </TouchableOpacity>
-                          </View>
-                        )}
+                              <Text style={style.registerLink}>
+                                {i === 0 && preRegisterUser?.allrounderUser?._id
+                                  ? 'My Dashboard'
+                                  : i === 1 && preRegisterUser?.nationalUser?._id
+                                  ? 'My Dashboard'
+                                  : i === 2 && preRegisterUser?.globalUser?._id
+                                  ? 'My Dashboard'
+                                  : actionTxt}
+                              </Text>
+                              <Icon name="keyboard-arrow-right" color="#93278f" size={25} />
+                            </View>
+                          </TouchableOpacity>
+                        </View>
                       </View>
                     ),
                   )}
@@ -516,7 +345,6 @@ const HomeScreen = ({props, navigation}: any) => {
               )}
             </View>
           )}
-
           <Modal
             visible={isModalVisible}
             transparent={true}
@@ -563,10 +391,8 @@ const styles = StyleSheet.create({
   },
   card: {
     height: '100%',
-    // backgroundColor: "red",
     flexDirection: 'column',
     justifyContent: 'center',
-    // flex:1
   },
   operation: {
     marginTop: 20,
