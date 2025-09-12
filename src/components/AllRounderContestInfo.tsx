@@ -47,7 +47,7 @@ const AllRounderContestInfo = ({navigation}: any) => {
       title: 'Platform to Showcase Talent',
       description:
         'Children get an opportunity to perform in front of audiences, cameras, and judges — helping them build stage confidence and learn real-world skills.',
-      icon: 'stage',
+      icon: 'star',
       iconType: 'MaterialIcons',
     },
     {

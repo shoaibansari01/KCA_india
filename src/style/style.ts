@@ -828,6 +828,66 @@ export const style: any = StyleSheet.create({
             fontWeight: 500,
             color: "#000"
         }
+    },
+    contestCardAllrounder: {
+        backgroundColor: "#2E5AAC",
+        borderRadius: 15,
+        marginVertical: 10,
+        padding: 20,
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    contestCardNational: {
+        backgroundColor: "#0D8A7A",
+        borderRadius: 15,
+        marginVertical: 10,
+        padding: 20,
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    contestCardGlobal: {
+        backgroundColor: "#2E5AAC",
+        borderRadius: 15,
+        marginVertical: 10,
+        padding: 20,
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    contestCardGenius: {
+        backgroundColor: "#C5731F",
+        borderRadius: 15,
+        marginVertical: 10,
+        padding: 20,
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    contestCardIcon: {
+        marginRight: 15,
+        width: 50,
+        height: 50,
+        backgroundColor: "rgba(255, 255, 255, 0.2)",
+        borderRadius: 25,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    contestCardTitle: {
+        color: "#fff",
+        fontSize: responsiveFontSize(2.2),
+        fontWeight: "bold",
+        marginBottom: 5,
+    },
+    contestCardSubtitle: {
+        color: "#fff",
+        fontSize: responsiveFontSize(1.6),
+        opacity: 0.9,
+    },
+    contestCardBase: {
+        borderRadius: 15,
+        marginVertical: 10,
+        padding: 20,
+        flexDirection: "row",
+        alignItems: "center",
+        width: "90%",
     }
 
 

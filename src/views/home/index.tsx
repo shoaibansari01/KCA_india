@@ -49,6 +49,34 @@ const classOptions = [
   { value: 'Class10', label: '9th & 10th' },
 ];
 
+// Banner contest data with colors and icons
+const bannerContests = [
+  {
+    title: 'National All-Rounder Talent Hub Contests',
+    subtitle: '(For Nursery to Class 10th Students)',
+    backgroundColor: '#2E5AAC',
+    iconName: 'school',
+  },
+  {
+    title: 'National Talent Search Drawing & Painting',
+    subtitle: 'Scholarship Competition\n(For Nursery to class 10th students)',
+    backgroundColor: '#0D8A7A',
+    iconName: 'palette',
+  },
+  {
+    title: 'Global Art Exhibition',
+    subtitle: '(Open For All)',
+    backgroundColor: '#2E5AAC',
+    iconName: 'public',
+  },
+  {
+    title: 'National Kids Achievers Genius Awards',
+    subtitle: '(For 3 to 18 yrs)',
+    backgroundColor: '#C5731F',
+    iconName: 'emoji-events',
+  },
+];
+
 export const cardsMappped = [
   {
     title: 'National All-Rounder Talent Hub Contests (For 3 years to 15 years)',
@@ -207,17 +235,25 @@ const HomeScreen = ({ props, navigation }: any) => {
                 alignItems: 'center',
                 height: responsiveHeight(70),
               }}>
-              {[
-                'National All-Rounder Talent Hub Contests (For Nursery to Class 10th Students)',
-                `National Talent Search Drawing and Painting Scholarship Competition (For Nursery to class 10th students)`,
-                `Global Art Exhibition (Open For All)`,
-                `National Kids Achievers Genius Awards (For 3 to 18 yrs)`,
-              ].map((e, i) => (
+              {bannerContests.map(({ title, subtitle, backgroundColor, iconName }, i) => (
                 <TouchableOpacity
-                  style={style.rectangles}
-                  onPress={() => setBannerState(false)}
-                  key={i}>
-                  <Text style={style.rectanglesText}>{e}</Text>
+                  key={i}
+                  style={[
+                    style.contestCardBase,
+                    { backgroundColor }
+                  ]}
+                  onPress={() => setBannerState(false)}>
+                  <View style={style.contestCardIcon}>
+                    <Icon 
+                      name={iconName} 
+                      color="#fff" 
+                      size={28} 
+                    />
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <Text style={style.contestCardTitle}>{title}</Text>
+                    <Text style={style.contestCardSubtitle}>{subtitle}</Text>
+                  </View>
                 </TouchableOpacity>
               ))}
             </View>

@@ -164,7 +164,7 @@ const AllRounderPaymentScreen = ({ route, navigation }: any) => {
             style={{ marginRight: 14 }}
           />
           <Text style={[style.fs18, style.boldText, style.textColorBlack]}>
-            Registration of All-Rounder Talent Hub Contests
+            Total Fees
           </Text>
         </TouchableOpacity>
 
@@ -325,8 +325,8 @@ const AllRounderPaymentScreen = ({ route, navigation }: any) => {
                 style={{ marginRight: 14, marginBottom: 15 }}
               />
               <Text style={styles.modalText}>
-                Your All-Rounder Contest registration has been submitted successfully! 
-                We will review your payment and update your registration status.
+                Registration has been submitted successfully! 
+                We will review your Fees Receipt and update your registration status.
               </Text>
               <TouchableOpacity
                 onPress={() => closeModal(false, false, true)}

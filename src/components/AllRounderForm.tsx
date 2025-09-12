@@ -180,7 +180,7 @@ const AllRounderForm = ({ navigation }: any) => {
           style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
           <Icon name="arrow-back" color="#130F26" size={22} style={{ marginRight: 14 }} />
           <Text style={[style.fs18, style.boldText, style.textColorBlack]}>
-            Fees of National All-Rounder Talent Hub Contests
+             Registration Form
           </Text>
         </TouchableOpacity>
 
