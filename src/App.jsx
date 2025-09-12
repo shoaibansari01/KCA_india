@@ -8,6 +8,7 @@ import Login from './pages/auth/Login';
 import Dashboard from './pages/dashboard/Dashboard';
 import Users from './pages/users/Users';
 import Registrations from './pages/registrations/Registrations';
+import StudentData from './pages/studentData/StudentData';
 import PaymentsLayout from './pages/payments/PaymentsLayout';
 import Banners from './pages/banners/Banners';
 import './App.css';
@@ -66,6 +67,16 @@ function App() {
                 <ProtectedRoute>
                   <Layout>
                     <Registrations />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/student-data"
+              element={
+                <ProtectedRoute>
+                  <Layout>
+                    <StudentData />
                   </Layout>
                 </ProtectedRoute>
               }

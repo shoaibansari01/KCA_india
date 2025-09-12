@@ -38,10 +38,10 @@ const Registrations = () => {
       const currentTab = tabs.find(tab => tab.key === activeTab);
       const tabFilterType = currentTab ? currentTab.value : '';
       
-      const response = await registrationService.getRegistrations(currentPage, 10, searchTerm, tabFilterType);
+      const response = await registrationService.getRegistrations(currentPage, null, searchTerm, tabFilterType);
       setRegistrations(response.data || []);
       setTotalPages(1);
-      setTotalRegistrations(response.data?.length || 0);
+      setTotalRegistrations(response.totalCount || response.data?.length || 0);
     } catch (error) {
       console.error('Error fetching registrations:', error);
     } finally {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://3.110.6.169:4000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://3.110.6.169:4000/';
 
 // Create axios instance with default config
 const api = axios.create({

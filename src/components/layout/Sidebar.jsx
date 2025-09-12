@@ -5,6 +5,7 @@ import {
   Users,
   FileText,
   CreditCard,
+  Database,
   LogOut,
   Menu,
   X
@@ -29,6 +30,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       path: '/registrations',
       icon: FileText,
       label: 'Registrations'
+    },
+    {
+      path: '/student-data',
+      icon: Database,
+      label: 'Student Data'
     },
     {
       path: '/payments',
