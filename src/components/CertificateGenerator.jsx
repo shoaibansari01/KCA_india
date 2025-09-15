@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Download, Award, Loader2, AlertCircle, FileText } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import toast from 'react-hot-toast';
+import api from '../services/api';
 import certificateImg from '../assets/certificate.jpeg';
 
 const CertificateGenerator = ({ isOpen, onClose, fileUrl, fileName }) => {
@@ -376,6 +377,66 @@ const CertificateGenerator = ({ isOpen, onClose, fileUrl, fileName }) => {
     }
   };
 
+  const handleSendToUser = async () => {
+    if (selectedStudents.length === 0) {
+      toast.error('Please select at least one student');
+      return;
+    }
+
+    setLoading(true);
+    
+    try {
+      const selectedStudentData = studentData.filter(student => 
+        selectedStudents.includes(student.id)
+      );
+
+      // Generate certificates and convert to blobs
+      const certificateBlobs = [];
+      for (let i = 0; i < selectedStudentData.length; i++) {
+        const student = selectedStudentData[i];
+        const certificateDataUrl = await generateCertificate(student);
+        
+        // Convert to blob
+        const response = await fetch(certificateDataUrl);
+        const blob = await response.blob();
+        
+        certificateBlobs.push({
+          blob: blob,
+          studentName: getStudentName(student),
+          fileName: `certificate_${getStudentName(student).replace(/[^a-zA-Z0-9]/g, '_')}.png`
+        });
+      }
+
+      // Prepare form data
+      const formData = new FormData();
+      formData.append('originalFileUrl', fileUrl);
+      formData.append('fileName', fileName);
+      
+      // Prepare student names array
+      const studentNamesArray = certificateBlobs.map(cert => cert.studentName);
+      formData.append('studentNames', JSON.stringify(studentNamesArray));
+      
+      // Add certificate files
+      certificateBlobs.forEach((cert) => {
+        formData.append('certificates', cert.blob, cert.fileName);
+      });
+
+      // Send to backend API using centralized API client
+      await api.post('/admin/send-certificates-to-user', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      
+      toast.success(`Sent ${certificateBlobs.length} certificates to user!`);
+    } catch (error) {
+      console.error('Error sending certificates to user:', error);
+      toast.error('Failed to send certificates to user');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const CertificatePreview = () => {
     const [previewDataUrl, setPreviewDataUrl] = useState('');
     
@@ -553,6 +614,14 @@ const CertificateGenerator = ({ isOpen, onClose, fileUrl, fileName }) => {
                     >
                       <Download className="w-4 h-4 mr-2" />
                       Download Certificates
+                    </button>
+                    <button
+                      onClick={handleSendToUser}
+                      disabled={selectedStudents.length === 0 || loading}
+                      className="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <Award className="w-4 h-4 mr-2" />
+                      Send to User
                     </button>
                   </div>
                 </div>

@@ -3,11 +3,13 @@ import { Search, Download, FileText, User, School, Calendar, ExternalLink, Datab
 import Table from '../../components/ui/Table';
 import ExcelViewer from '../../components/ExcelViewer';
 import CertificateGenerator from '../../components/CertificateGenerator';
+import SentCertificates from '../../components/SentCertificates';
 import { studentDataService } from '../../services/studentDataService';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
 
 const StudentData = () => {
+  const [activeTab, setActiveTab] = useState('student-files');
   const [studentFiles, setStudentFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -132,16 +134,61 @@ const StudentData = () => {
         <div>
           <h1 className="text-2xl font-bold text-gray-900 flex items-center">
             <Database className="w-6 h-6 mr-3 text-blue-600" />
-            Student Data Files
+            Student Data Management
           </h1>
-          <p className="text-gray-600">Manage all uploaded student Excel files</p>
+          <p className="text-gray-600">Manage student Excel files and certificates</p>
         </div>
         <div className="text-sm text-gray-500">
           Total Files: <span className="font-semibold text-gray-900">{studentFiles.length}</span>
         </div>
       </div>
 
-      {/* Search and Actions */}
+      {/* Tab Navigation */}
+      <div className="bg-white rounded-lg shadow-sm border">
+        <div className="border-b border-gray-200">
+          <nav className="flex space-x-8 px-6" aria-label="Tabs">
+            <button
+              onClick={() => setActiveTab('student-files')}
+              className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors focus:outline-none ${
+                activeTab === 'student-files'
+                  ? 'border-blue-500 text-blue-600 bg-blue-50'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              <div className="flex items-center">
+                <FileText className="w-4 h-4 mr-2" />
+                Student Data Files 
+              </div>
+            </button>
+            <button
+              onClick={() => setActiveTab('sent-certificates')}
+              className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors focus:outline-none ${
+                activeTab === 'sent-certificates'
+                  ? 'border-purple-500 text-purple-600 bg-purple-50'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              <div className="flex items-center">
+                <Award className="w-4 h-4 mr-2" />
+                View Sent Certificates
+              </div>
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <div className="min-h-[50px] space-y-2 px-6 py-4 bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 rounded-lg shadow-sm border my-4">
+        <h1 className="text-lg font-semibold text-gray-900 tracking-tight">
+          National Talent Search Drawing And Painting Scholarship Competition 2025
+        </h1>
+        <p className="text-sm text-gray-600">
+          View and manage student data files, generate certificates, and track sent certificates for the competition.
+        </p>
+      </div>
+      {/* Tab Content */}
+      {activeTab === 'student-files' && (
+        <>
+          {/* Search and Actions */}
       <div className="bg-white rounded-lg shadow-sm border p-6">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
@@ -346,21 +393,28 @@ const StudentData = () => {
         )}
       </div>
 
-      {/* Excel Viewer Modal */}
-      <ExcelViewer
-        isOpen={showExcelViewer}
-        onClose={handleCloseExcelViewer}
-        fileUrl={selectedFile?.url}
-        fileName={selectedFile?.name}
-      />
+          {/* Excel Viewer Modal */}
+          <ExcelViewer
+            isOpen={showExcelViewer}
+            onClose={handleCloseExcelViewer}
+            fileUrl={selectedFile?.url}
+            fileName={selectedFile?.name}
+          />
 
-      {/* Certificate Generator Modal */}
-      <CertificateGenerator
-        isOpen={showCertificateGenerator}
-        onClose={handleCloseCertificateGenerator}
-        fileUrl={selectedFileForCertificate?.url}
-        fileName={selectedFileForCertificate?.name}
-      />
+          {/* Certificate Generator Modal */}
+          <CertificateGenerator
+            isOpen={showCertificateGenerator}
+            onClose={handleCloseCertificateGenerator}
+            fileUrl={selectedFileForCertificate?.url}
+            fileName={selectedFileForCertificate?.name}
+          />
+        </>
+      )}
+
+      {/* Sent Certificates Tab */}
+      {activeTab === 'sent-certificates' && (
+        <SentCertificates />
+      )}
     </div>
   );
 };
