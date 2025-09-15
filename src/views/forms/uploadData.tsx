@@ -45,7 +45,7 @@ const UploadData = ({ navigation, route }: any) => {
     const uploadFile = async () => {
         // setFormSubmit(true);
         if (!schoolName?.length) {
-            setError('School name cann`t be empty');
+            setError('School name can\'t be empty');
             return;
         }
         setLoader(true);
@@ -58,17 +58,20 @@ const UploadData = ({ navigation, route }: any) => {
         });
         formData.append('data', JSON.stringify({ ...data?.values, upload_type: "form", school_name: schoolName }))
         try {
-            await postReq({
+            const res = await postReq({
                 url: `upload-student-data/studentUpload`, data: formData
             });
+            if (res) {
+                setLoader(false);
+                setSchoolName('');
+                setError('');
+                setFileResponse(null);
+                navigation.goBack();
+            }
         } catch (error) {
             console.error('Error uploading file', error);
+            setLoader(false);
         }
-        setLoader(false);
-        setSchoolName('');
-        setError('');
-        setFileResponse(null);
-        navigation.goBack();
         // setFormSubmit(false);
         // await handlePaymentModal();
     };

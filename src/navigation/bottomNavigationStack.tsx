@@ -30,6 +30,8 @@ import WebviewScreen from '../components/videoModal';
 import NominiForm from '../views/nominationForm/nominiForm';
 import NominiPaymentSection from '../views/nominationForm/paymentPage';
 import ViewStudentData from '../views/forms/viewStudentData';
+import ViewStudentCertificates from '../views/forms/viewStudentCertificates';
+import CertificateImageViewer from '../views/forms/certificateImageViewer';
 import ExcelViewerScreen from '../views/forms/excelViewerScreen';
 import CertificateViewer from '../views/forms/certificateViewer';
 import AllRounderContestInfo from '../components/AllRounderContestInfo';
@@ -113,6 +115,16 @@ const HomeStack = () => {
             <Stack.Screen
                 name='ViewStudentData'
                 component={ViewStudentData}
+                options={{ header: () => null }}
+            />
+            <Stack.Screen
+                name='ViewStudentCertificates'
+                component={ViewStudentCertificates}
+                options={{ header: () => null }}
+            />
+            <Stack.Screen
+                name='CertificateImageViewer'
+                component={CertificateImageViewer}
                 options={{ header: () => null }}
             />
             <Stack.Screen

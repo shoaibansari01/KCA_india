@@ -45,6 +45,8 @@ import io.xogus.reactnative.versioncheck.RNVersionCheckPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 // react-native-webview
 import com.reactnativecommunity.webview.RNCWebViewPackage;
+// react-native-zip-archive
+import com.rnziparchive.RNZipArchivePackage;
 // sp-react-native-in-app-updates
 import com.sudoplz.rninappupdates.SpReactNativeInAppUpdatesPackage;
 
@@ -109,6 +111,7 @@ public class PackageList {
       new RNVersionCheckPackage(),
       new RNViewShotPackage(),
       new RNCWebViewPackage(),
+      new RNZipArchivePackage(),
       new SpReactNativeInAppUpdatesPackage()
     ));
   }

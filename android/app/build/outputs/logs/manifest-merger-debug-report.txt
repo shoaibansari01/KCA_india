@@ -25,6 +25,7 @@ MERGED from [:react-native-vector-icons] /Users/shoaibansari/FL Projects/kca/kca
 MERGED from [:react-native-version-check] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-version-check/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-view-shot] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-view-shot/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:react-native-webview] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-19:12
+MERGED from [:react-native-zip-archive] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-zip-archive/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:sp-react-native-in-app-updates] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/sp-react-native-in-app-updates/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.react:react-android:0.72.7] /Users/shoaibansari/.gradle/caches/transforms-3/f5b6369cea5fc99dae80dd8391bca788/transformed/jetified-react-android-0.72.7-debug/AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.react:hermes-android:0.72.7] /Users/shoaibansari/.gradle/caches/transforms-3/fa7dc7ca1c3bf05f8e6dbabdb3bb74dc/transformed/jetified-hermes-android-0.72.7-debug/AndroidManifest.xml:2:1-7:12
@@ -341,6 +342,8 @@ MERGED from [:react-native-view-shot] /Users/shoaibansari/FL Projects/kca/kca_na
 MERGED from [:react-native-view-shot] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-view-shot/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-webview] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:react-native-webview] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:react-native-zip-archive] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-zip-archive/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:react-native-zip-archive] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/react-native-zip-archive/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:sp-react-native-in-app-updates] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/sp-react-native-in-app-updates/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:sp-react-native-in-app-updates] /Users/shoaibansari/FL Projects/kca/kca_native 2/node_modules/sp-react-native-in-app-updates/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.react:react-android:0.72.7] /Users/shoaibansari/.gradle/caches/transforms-3/f5b6369cea5fc99dae80dd8391bca788/transformed/jetified-react-android-0.72.7-debug/AndroidManifest.xml:5:5-44

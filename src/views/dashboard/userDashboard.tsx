@@ -63,6 +63,11 @@ const UserDashboard = ({route, navigation}: any) => {
     //   redirect: 'ViewStudentData',
     // },
     {
+      name: isNational && 'View Student Certificates',
+      icon: 'card-membership',
+      redirect: 'ViewStudentCertificates',
+    },
+    {
       name: isNational && 'Upload Photos',
       icon: 'add-photo-alternate',
       redirect: 'UploadPhotos',

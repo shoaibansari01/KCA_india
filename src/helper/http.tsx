@@ -83,24 +83,26 @@ export const postReq = async ({ url, data, returnKey, errorCallback = () => null
     try {
         console.log('postReq called with:', { url, isAuthApi, dataType: data instanceof FormData ? 'FormData' : typeof data });
         
-        const headers = {
-            headers: {
-                ...(data instanceof FormData
-                    ? {} // Don't set Content-Type for FormData, let React Native handle it
-                    : { 'Content-Type': 'application/json' }),
-            },
-        };
-        
-        console.log('Headers:', headers);
-        
         let res: any = null;
-        if (isAuthApi) res = await AuthApi.post(`${url}`, data, headers);
-        if (!isAuthApi) res = await GuestApi.post(`${url}`, data, headers);
+        
+        // Use FormApi for FormData uploads to ensure proper authentication
+        if (data instanceof FormData) {
+            console.log('Using FormApi for FormData upload');
+            res = isAuthApi ? await FormApi.post(`${url}`, data) : await GuestApi.post(`${url}`, data);
+        } else {
+            console.log('Using AuthApi/GuestApi for JSON data');
+            const headers = {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            };
+            res = isAuthApi ? await AuthApi.post(`${url}`, data, headers) : await GuestApi.post(`${url}`, data, headers);
+        }
         
         console.log('Response received:', { 
             status: res?.status, 
             hasData: !!res?.data,
-            fullResponse: res
+            fullResponse: res?.data
         });
         
         if (returnKey && res?.data) return res?.data[returnKey]
@@ -422,7 +424,7 @@ const fileDownloader = (url: any) => new Promise((resolve, reject) => {
             //         Alert.alert('Error', 'Failed to open file: ' + err.message);
             //     });
             ToastMessage("Download Complete");
-            // resolve(result);
+            resolve(res);
         })
         .catch(error => {
             console.log(error, "error");
